@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="local">
+      <UniqueIdentifier>{e5f37b1e-40a0-491a-8f86-b3b551d41e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include\MFC">
+      <UniqueIdentifier>{7e498dcf-25a1-4165-9272-b3e8d6b1601a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Panes">
+      <UniqueIdentifier>{7a7d2803-db92-49fb-acdd-9110d9cfc1b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Controls">
+      <UniqueIdentifier>{9f957f26-9dd2-4d77-9e86-f582c305bb65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Documents">
+      <UniqueIdentifier>{3b88181a-f650-44a6-9eae-0cb1cda955fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Toolbars">
+      <UniqueIdentifier>{6fbef6a5-25af-4ace-952d-29572d128206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Views">
+      <UniqueIdentifier>{2fc8f6b2-d150-4e3f-8761-17e5d7100e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Panes">
+      <UniqueIdentifier>{49d5fd29-4a02-42e6-ac6f-b24c8fe9b709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controls">
+      <UniqueIdentifier>{60d17855-cafa-4ef4-a389-639e6ca7be06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Documents">
+      <UniqueIdentifier>{54fe07fe-dd82-42c7-be82-4263a6e060d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Toolbars">
+      <UniqueIdentifier>{3820a5df-3fda-449a-bb87-c3aa720774f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views">
+      <UniqueIdentifier>{c253829a-295a-49c9-ba72-caafc8fd5f83}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="RetroMFC.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\RetroVisualManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\DocumentEx.cpp">
+      <Filter>src\Documents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\LogPane.cpp">
+      <Filter>src\Panes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\MFCToolBarEx.cpp">
+      <Filter>src\Toolbars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\ListBoxEx.cpp">
+      <Filter>src\Controls</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\RetroMFC.rc2">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+    <None Include="RetroMFC.def">
+      <Filter>local</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\MFC.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\MFC\RetroVisualManager.h">
+      <Filter>include\MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\MFC\DocumentEx.h">
+      <Filter>include\MFC\Documents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\MFC\LogPane.h">
+      <Filter>include\MFC\Panes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\RetroCode\MFC\MFCToolBarEx.h">
+      <Filter>src\Toolbars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\RetroCode\MFC\ListBoxEx.h">
+      <Filter>src\Controls</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RetroMFC.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="toolbar1.bmp">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
