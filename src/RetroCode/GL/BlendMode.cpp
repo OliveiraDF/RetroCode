@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -26,34 +26,54 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
 namespace retro
 {
-	namespace mfc
+	namespace gl
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
+		static constexpr LPCTSTR BLENDMODES[] =
 		{
-		protected:
-
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
-
-		public:
-
-			virtual ~CDocumentEx();
-
-		public:
-
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
-
-		protected:
-
-			DECLARE_MESSAGE_MAP()
-
+			_T("Alpha"),
+			_T("Add"),
+			_T("Multiply"),
+			_T("None")
 		};
+		C_ASSERT(EBlendMode_COUNT == ARRAYSIZE(BLENDMODES));
+
+		LPCTSTR BlendModeToString(EBlendMode eBlendMode)
+		{
+			ASSERT(eBlendMode >= 0);
+			ASSERT(eBlendMode < EBlendMode_COUNT);
+
+			if (eBlendMode < 0)
+			{
+				return NULL;
+			}
+
+			if (eBlendMode >= EBlendMode_COUNT)
+			{
+				return NULL;
+			}
+
+			return BLENDMODES[eBlendMode];
+		}
+
+		EBlendMode StringToBlendMode(LPCTSTR lpszBlendMode)
+		{
+			for (INT i = 0; i < EBlendMode_COUNT; i++)
+			{
+				if (StrCmp(BLENDMODES[i], lpszBlendMode) == 0)
+				{
+					return static_cast<EBlendMode>(i);
+				}
+			}
+
+			ASSERT(FALSE);
+
+			return EBlendMode_INVALID;
+		}
 
 	}
 }

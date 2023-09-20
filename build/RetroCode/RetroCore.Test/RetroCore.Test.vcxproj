@@ -171,6 +171,7 @@
     <ClCompile Include="..\..\..\test\Core\Circular.test.cpp" />
     <ClCompile Include="..\..\..\test\Core\Clock.test.cpp" />
     <ClCompile Include="..\..\..\test\Core\ExtractPath.test.cpp" />
+    <ClCompile Include="..\..\..\test\Core\ImageResource.test.cpp" />
     <ClCompile Include="..\..\..\test\Core\Interpolation.test.cpp" />
     <ClCompile Include="..\..\..\test\Core\Matching.test.cpp" />
     <ClCompile Include="..\..\..\test\Core\ObjectEx.test.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="..\..\..\test\Core\Circular.test.h" />
     <ClInclude Include="..\..\..\test\Core\Clock.test.h" />
     <ClInclude Include="..\..\..\test\Core\ExtractPath.test.h" />
+    <ClInclude Include="..\..\..\test\Core\ImageResource.test.h" />
     <ClInclude Include="..\..\..\test\Core\Interpolation.test.h" />
     <ClInclude Include="..\..\..\test\Core\Matching.test.h" />
     <ClInclude Include="..\..\..\test\Core\ObjectEx.test.h" />
@@ -205,7 +207,15 @@
     <ClInclude Include="..\..\..\test\Core\StopWatch.test.h" />
     <ClInclude Include="..\..\..\test\Core\Timer.test.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="TestTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RetroCore.Test.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="test.bmp" />
+    <Image Include="test.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

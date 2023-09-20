@@ -33,6 +33,9 @@
   */
 #include "Core.h"
 
+#include <afxcontrolbars.h>
+
+#include "MFC/FontResource.h"
 #include "MFC/RetroVisualManager.h"
 #include "MFC/DocumentEx.h"
 #include "MFC/LogPane.h"

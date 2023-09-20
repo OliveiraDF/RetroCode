@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -26,34 +26,52 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
 namespace retro
 {
-	namespace mfc
+	namespace gl
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
+		TVertex::TVertex()
+			: vPosition(0.f, 0.f)
+			, clrColor(255, 255, 255)
+			, vTexCoords(0.f, 0.f)
 		{
-		protected:
 
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
+		}
 
-		public:
+		TVertex::TVertex(const core::TVector2f& vPosition)
+			: vPosition(vPosition)
+			, clrColor(255, 255, 255)
+			, vTexCoords(0.f, 0.f)
+		{
 
-			virtual ~CDocumentEx();
+		}
 
-		public:
+		TVertex::TVertex(const core::TVector2f& vPosition, const core::TColorRGBA& clrColor)
+			: vPosition(vPosition)
+			, clrColor(clrColor)
+			, vTexCoords(0.f, 0.f)
+		{
 
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
+		}
 
-		protected:
+		TVertex::TVertex(const core::TVector2f& vPosition, const core::TVector2f& vTexCoords)
+			: vPosition(vPosition)
+			, clrColor(255, 255, 255)
+			, vTexCoords(vTexCoords)
+		{
 
-			DECLARE_MESSAGE_MAP()
+		}
 
-		};
+		TVertex::TVertex(const core::TVector2f& vPosition, const core::TColorRGBA& clrColor, const core::TVector2f& vTexCoords)
+			: vPosition(vPosition)
+			, clrColor(clrColor)
+			, vTexCoords(vTexCoords)
+		{
+
+		}
 
 	}
 }

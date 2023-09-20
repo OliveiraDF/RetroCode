@@ -28,43 +28,44 @@
 
 #pragma once
 
+ /**
+  * Headers
+  */
+#include "MFC.h"
+#include "GL.h"
+
+#include "Scene/Node.h"
+#include "Scene/SceneDocument.h"
+#include "Scene/SceneView.h"
+#include "Scene/ViewNode.h"
+#include "Scene/TransformableNode.h"
+#include "Scene/DrawableNode.h"
+#include "Scene/PointNode.h"
+#include "Scene/LineNode.h"
+#include "Scene/RectangleNode.h"
+#include "Scene/SpriteNode.h"
+#include "Scene/TextNode.h"
+
 namespace retro
 {
-	namespace core
+	namespace scene
 	{
 
 		/**
-		 * @ingroup core
-		 * @brief Translates a string resource ID to the corresponding string
+		 * @ingroup scene
+		 * @brief Get Retro Scene runtime version
 		 *
-		 * This function takes a string resource ID as input and returns the corresponding
-		 * string from the Windows String Table
-		 *
-		 * @param uID The string resource ID to translate
-		 *
-		 * @return A CString containing the translated string
+		 * @return The version of Retro Scene
 		 *
 		 */
-		CString AFX_EXT_API Translate(UINT uID);
-
-		/**
-		 * @ingroup core
-		 * @brief Translates a window that contains an application-supplied message and caption, plus a combination of the predefined icons and pushbuttons
-		 *
-		 * This function takes strings resource ID as input and returns the corresponding
-		 * strings from the Windows String Table
-		 *
-		 * @param pWnd			A pointer to the owner window of the message box to be created
-		 * @param uID			The text string resource ID to translate
-		 * @param uIDCaption	The caption string resource ID to translate
-		 * @param uType			Specifies the contents and behavior of the message box
-		 *
-		 * @return See Microsoft MessageBox function documentation
-		 *
-		 */
-		INT AFX_EXT_API MessageBoxStringTable(CWnd* pWnd, UINT uIDText, UINT uIDCaption, UINT uType);
+		AFX_EXT_API CString GetVersion();
 
 	}
 }
 
-#define I18N(id) retro::core::Translate(id)
+/**
+ * @defgroup scene Scene module
+ *
+ * Scene module of RetroCode, defining ready-to-use 2D scene rendering
+ *
+ */

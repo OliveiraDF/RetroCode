@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -30,30 +30,16 @@
 
 namespace retro
 {
-	namespace mfc
+	namespace gl
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
-		{
-		protected:
-
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
-
-		public:
-
-			virtual ~CDocumentEx();
-
-		public:
-
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
-
-		protected:
-
-			DECLARE_MESSAGE_MAP()
-
-		};
+		HRESULT AFX_EXT_API GetOpenGLError();
 
 	}
 }
+
+#ifdef _DEBUG
+#define glCheck(glfunction) glfunction;{ HRESULT hr = retro::gl::GetOpenGLError(); if (FAILED(hr)) { retro::core::LogInterfaceError(_T("[OPENGL] "), hr, retro::core::ELogLevel_Error); } }
+#else
+#define glCheck(glfunction) glfunction;
+#endif

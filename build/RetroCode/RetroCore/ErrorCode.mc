@@ -53,3 +53,9 @@ SymbolicName=RC_GL_OUT_OF_MEMORY
 Language=English
 There is not enough memory left to execute the function. The state of OpenGL is undefined, except for the state of the error flags, after this error is recorded.%n
 .
+
+MessageId=0x2009
+SymbolicName=RC_GLEXT_NOTINITIALIZED
+Language=English
+GLEXT prototypes are not initialized.%n
+.

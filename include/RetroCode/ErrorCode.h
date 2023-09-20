@@ -108,3 +108,12 @@
 //
 #define RC_GL_OUT_OF_MEMORY              ((HRESULT)0x00002008L)
 
+//
+// MessageId: RC_GLEXT_NOTINITIALIZED
+//
+// MessageText:
+//
+// GLEXT prototypes are not initialized.%n
+//
+#define RC_GLEXT_NOTINITIALIZED          ((HRESULT)0x00002009L)
+

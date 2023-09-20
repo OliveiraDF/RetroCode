@@ -101,13 +101,13 @@ namespace retro
 		 */
 		void AFX_EXT_API UnregisterAllObserver();
 
-#define LogDbg(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); Log(__txt__.GetString(), ELogLevel_Debug); }
-#define LogInf(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); Log(__txt__.GetString(), ELogLevel_Information); }
-#define LogPrc(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); Log(__txt__.GetString(), ELogLevel_Process); }
-#define LogWarn(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); Log(__txt__.GetString(), ELogLevel_Warning); }
-#define LogErr(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); Log(__txt__.GetString(), ELogLevel_Error); }
-#define LogWinMsg(err, msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); LogWinError(__txt__.GetString(), err); }
-#define LogHRMsg(hr, msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); LogInterfaceError(__txt__.GetString(), hr); }
-
 	}
 }
+
+#define LogDbg(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::Log(__txt__.GetString(), retro::core::ELogLevel_Debug); }
+#define LogInf(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::Log(__txt__.GetString(), retro::core::ELogLevel_Information); }
+#define LogPrc(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::Log(__txt__.GetString(), retro::core::ELogLevel_Process); }
+#define LogWarn(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::Log(__txt__.GetString(), retro::core::ELogLevel_Warning); }
+#define LogErr(msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::Log(__txt__.GetString(), retro::core::ELogLevel_Error); }
+#define LogWinMsg(err, msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::LogWinError(__txt__.GetString(), err); }
+#define LogHRMsg(hr, msg, ...) { CString __txt__; __txt__.Format(msg, __VA_ARGS__); retro::core::LogInterfaceError(__txt__.GetString(), hr); }

@@ -28,43 +28,39 @@
 
 #pragma once
 
+ /**
+  * Headers
+  */
+#include "Core.h"
+
+#include "GL/Check.h"
+#include "GL/PrimitiveType.h"
+#include "GL/BlendMode.h"
+#include "GL/Vertex.h"
+#include "GL/3x3Matrix.h"
+#include "GL/RenderContext.h"
+#include "GL/RenderView.h"
+
 namespace retro
 {
-	namespace core
+	namespace gl
 	{
 
 		/**
-		 * @ingroup core
-		 * @brief Translates a string resource ID to the corresponding string
+		 * @ingroup gl
+		 * @brief Get Retro GL runtime version
 		 *
-		 * This function takes a string resource ID as input and returns the corresponding
-		 * string from the Windows String Table
-		 *
-		 * @param uID The string resource ID to translate
-		 *
-		 * @return A CString containing the translated string
+		 * @return The version of Retro GL
 		 *
 		 */
-		CString AFX_EXT_API Translate(UINT uID);
-
-		/**
-		 * @ingroup core
-		 * @brief Translates a window that contains an application-supplied message and caption, plus a combination of the predefined icons and pushbuttons
-		 *
-		 * This function takes strings resource ID as input and returns the corresponding
-		 * strings from the Windows String Table
-		 *
-		 * @param pWnd			A pointer to the owner window of the message box to be created
-		 * @param uID			The text string resource ID to translate
-		 * @param uIDCaption	The caption string resource ID to translate
-		 * @param uType			Specifies the contents and behavior of the message box
-		 *
-		 * @return See Microsoft MessageBox function documentation
-		 *
-		 */
-		INT AFX_EXT_API MessageBoxStringTable(CWnd* pWnd, UINT uIDText, UINT uIDCaption, UINT uType);
+		AFX_EXT_API CString GetVersion();
 
 	}
 }
 
-#define I18N(id) retro::core::Translate(id)
+/**
+ * @defgroup gl GL module
+ *
+ * GL module of RetroCode, defining ready-to-use OpenGL context, view...
+ *
+ */

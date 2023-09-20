@@ -206,6 +206,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\RetroCode\MFC\DocumentEx.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\FontResource.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\MFC\ListBoxEx.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\MFC\LogPane.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\MFC\MFCToolBarEx.cpp" />
@@ -239,6 +240,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\RetroCode\MFC.h" />
     <ClInclude Include="..\..\..\include\RetroCode\MFC\DocumentEx.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\MFC\FontResource.h" />
     <ClInclude Include="..\..\..\include\RetroCode\MFC\LogPane.h" />
     <ClInclude Include="..\..\..\include\RetroCode\MFC\RetroVisualManager.h" />
     <ClInclude Include="..\..\..\src\RetroCode\MFC\ListBoxEx.h" />

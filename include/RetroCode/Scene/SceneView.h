@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -30,30 +30,74 @@
 
 namespace retro
 {
-	namespace mfc
+	namespace scene
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
+		class CSceneView : public gl::CRenderView
 		{
+#pragma region Constructors
+
+			DECLARE_DYNCREATE(CSceneView)
+
 		protected:
 
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
+			CSceneView();
+			virtual ~CSceneView();
+
+#pragma endregion
+#pragma region Attributes
 
 		public:
 
-			virtual ~CDocumentEx();
+			CSceneDocument* GetDocument() const;
 
-		public:
+#pragma endregion
+#pragma region Overridables
 
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
+			BOOL PreCreateWindow(CREATESTRUCT& cs) override;
+			void OnInitialUpdate() override;
+			void OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint) override;
+			void OnDraw(CDC* pDC) override;   
+#ifdef _DEBUG
+			void AssertValid() const override;
+#ifndef _WIN32_WCE
+			void Dump(CDumpContext& dc) const override;
+#endif
+#endif
+
+#pragma endregion
+#pragma region Implementations
+
+		private:
+
+			CNode* GetRootDocument();
+			const CNode* GetRootDocument() const;
+
+#pragma endregion
+#pragma region Messages
 
 		protected:
 
 			DECLARE_MESSAGE_MAP()
 
+		public:
+
+			afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+			afx_msg void OnSize(UINT uType, int cx, int cy);
+
+#pragma endregion
+
 		};
+
+#ifndef _DEBUG  
+		inline CSceneDocument* CSceneView::GetDocument() const
+		{
+			return reinterpret_cast<CSceneDocument*>(m_pDocument);
+		}
+#endif
 
 	}
 }
+
+
+

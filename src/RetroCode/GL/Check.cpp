@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -26,34 +26,39 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
 namespace retro
 {
-	namespace mfc
+	namespace gl
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
+		HRESULT GetOpenGLError()
 		{
-		protected:
+			const GLenum uCode = glGetError();
 
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
+			switch (uCode)
+			{
+				case GL_INVALID_ENUM:
+					return RC_GL_INVALID_ENUM;
+				case GL_INVALID_VALUE:
+					return RC_GL_INVALID_VALUE;
+				case GL_INVALID_OPERATION:
+					return RC_GL_INVALID_OPERATION;
+				case GL_STACK_OVERFLOW:
+					return RC_GL_STACK_OVERFLOW;
+				case GL_STACK_UNDERFLOW:
+					return RC_GL_STACK_UNDERFLOW;
+				case GL_OUT_OF_MEMORY:
+					return RC_GL_OUT_OF_MEMORY;
+				case GL_NO_ERROR:
+					[[fallthrough]];
+				default:
+					break;
+			}
 
-		public:
-
-			virtual ~CDocumentEx();
-
-		public:
-
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
-
-		protected:
-
-			DECLARE_MESSAGE_MAP()
-
-		};
+			return S_OK;
+		}
 
 	}
 }

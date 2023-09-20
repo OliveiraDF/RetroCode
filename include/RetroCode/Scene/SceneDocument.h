@@ -1,7 +1,7 @@
 /**
  *
  * Retro Code
- * 
+ *
  * MIT License
  *
  * Copyright(c) 2014-2023 Retro Technique
@@ -30,29 +30,69 @@
 
 namespace retro
 {
-	namespace mfc
+	namespace scene
 	{
 
-		class AFX_EXT_API CDocumentEx : public CDocument
+		class CSceneDocument : public mfc::CDocumentEx
 		{
+#pragma region Constructors
+
 		protected:
 
-			CDocumentEx() noexcept;
-			DECLARE_DYNCREATE(CDocumentEx)
+			CSceneDocument() noexcept;
+			DECLARE_DYNCREATE(CSceneDocument)
 
 		public:
 
-			virtual ~CDocumentEx();
+			virtual ~CSceneDocument();
+
+#pragma endregion
+#pragma region Operations
 
 		public:
 
-			void SetModifiedFlag(BOOL bModified = TRUE) override;
-			BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace = TRUE) override;
+			CNode* CreateNode(LPCTSTR lpszType);
+
+#pragma endregion
+#pragma region Attributes
+
+		private:
+
+			CNode*			m_pRoot;
+			CMapStringToOb	m_Resources;
+
+#pragma endregion
+#pragma region Overridables
+
+		public:
+
+			BOOL OnNewDocument() override;
+			BOOL OnOpenDocument(LPCTSTR lpszPathName) override;
+			BOOL OnSaveDocument(LPCTSTR lpszPathName) override;
+			void OnCloseDocument() override;
+			void DeleteContents() override;
+			void Serialize(CArchive& ar) override;
+#ifdef _DEBUG
+			void AssertValid() const override;
+			void Dump(CDumpContext& dc) const override;
+#endif
+
+#pragma endregion
+#pragma region Implementations
+
+		private:
+
+			HRESULT Load();
+			void Unload();
+
+#pragma endregion 
+#pragma region Messages
 
 		protected:
 
 			DECLARE_MESSAGE_MAP()
 
+#pragma endregion 
 		};
 
 	}

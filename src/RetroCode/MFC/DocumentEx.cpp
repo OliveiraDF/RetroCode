@@ -58,22 +58,22 @@ namespace retro
 			{
 				CDocument::SetModifiedFlag(bModified);
 
-				CString zTitle = GetTitle();
+				CString strTitle = GetTitle();
 				if (bModified)
 				{
-					zTitle += "*";
+					strTitle += "*";
 				}
 				else
 				{
-					const INT nLen = zTitle.GetLength();
-					const TCHAR cLastChar = zTitle.GetAt(nLen - 1);
+					const INT nLen = strTitle.GetLength();
+					const TCHAR cLastChar = strTitle.GetAt(nLen - 1);
 					if (cLastChar == _T('*'))
 					{
-						zTitle.Delete(nLen - 1);
+						strTitle.Delete(nLen - 1);
 					}
 				}
 
-				SetTitle(zTitle);
+				SetTitle(strTitle);
 
 				POSITION pos = GetFirstViewPosition();
 				while (pos)
@@ -91,18 +91,18 @@ namespace retro
 
 		BOOL CDocumentEx::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		{
-			const CString zSaveTitle = GetTitle();
+			const CString strSaveTitle = GetTitle();
 
 			if (IsModified())
 			{
-				CString zTitle = zSaveTitle;
+				CString strTitle = strSaveTitle;
 
-				const INT nLen = zTitle.GetLength();
-				const TCHAR cLastChar = zTitle.GetAt(nLen - 1);
+				const INT nLen = strTitle.GetLength();
+				const TCHAR cLastChar = strTitle.GetAt(nLen - 1);
 				if (cLastChar == _T('*'))
 				{
-					zTitle.Delete(nLen - 1);
-					SetTitle(zTitle.GetString());
+					strTitle.Delete(nLen - 1);
+					SetTitle(strTitle.GetString());
 				}
 			}
 
@@ -111,7 +111,7 @@ namespace retro
 				return TRUE;
 			}
 
-			SetTitle(zSaveTitle);
+			SetTitle(strSaveTitle);
 
 			return FALSE;
 		}

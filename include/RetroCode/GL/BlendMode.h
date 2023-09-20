@@ -30,41 +30,46 @@
 
 namespace retro
 {
-	namespace core
+	namespace gl
 	{
 
 		/**
-		 * @ingroup core
-		 * @brief Translates a string resource ID to the corresponding string
-		 *
-		 * This function takes a string resource ID as input and returns the corresponding
-		 * string from the Windows String Table
-		 *
-		 * @param uID The string resource ID to translate
-		 *
-		 * @return A CString containing the translated string
+		 * @ingroup gl 
+		 * @brief Available blending modes for drawing
 		 *
 		 */
-		CString AFX_EXT_API Translate(UINT uID);
+		enum EBlendMode : INT
+		{
+			EBlendMode_Alpha,		/**< Pixel = Source * Source.a + Dest * (1 - Source.a) */
+			EBlendMode_Add,			/**< Pixel = Source + Dest */
+			EBlendMode_Multiply,	/**< Pixel = Source * Dest */
+			EBlendMode_None,		/**< Pixel = Source */
+
+			EBlendMode_COUNT,		/**< Blend mode count */
+			EBlendMode_INVALID = -1 /**< Invalid blend mode */
+		};
 
 		/**
-		 * @ingroup core
-		 * @brief Translates a window that contains an application-supplied message and caption, plus a combination of the predefined icons and pushbuttons
+		 * @ingroup gl
+		 * @brief Converts a blend mode enum value to a string
 		 *
-		 * This function takes strings resource ID as input and returns the corresponding
-		 * strings from the Windows String Table
+		 * @param eBlendMode The blend mode to convert
 		 *
-		 * @param pWnd			A pointer to the owner window of the message box to be created
-		 * @param uID			The text string resource ID to translate
-		 * @param uIDCaption	The caption string resource ID to translate
-		 * @param uType			Specifies the contents and behavior of the message box
-		 *
-		 * @return See Microsoft MessageBox function documentation
+		 * @return A pointer to a constant string representing the blend mode, or NULL if the blend mode is invalid
 		 *
 		 */
-		INT AFX_EXT_API MessageBoxStringTable(CWnd* pWnd, UINT uIDText, UINT uIDCaption, UINT uType);
+		LPCTSTR AFX_EXT_API BlendModeToString(EBlendMode eBlendMode);
+
+		/**
+		 * @ingroup gl
+		 * @brief Converts a string to a blend mode enum value
+		 *
+		 * @param lpszBlendMode The string to convert
+		 *
+		 * @return The corresponding blend mode, or EBlendMode_INVALID if the string is not recognized
+		 *
+		 */
+		EBlendMode AFX_EXT_API StringToBlendMode(LPCTSTR lpszBlendMode);
 
 	}
 }
-
-#define I18N(id) retro::core::Translate(id)
