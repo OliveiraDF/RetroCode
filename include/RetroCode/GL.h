@@ -34,11 +34,21 @@
 #include "Core.h"
 
 #include "GL/Check.h"
+#include "GL/FeatureType.h"
+#include "GL/ArrayType.h"
+#include "GL/CompilationMode.h"
+#include "GL/QueryString.h"
+#include "GL/MatrixMode.h"
 #include "GL/PrimitiveType.h"
-#include "GL/BlendMode.h"
+#include "GL/FormatType.h"
+#include "GL/DataType.h"
+#include "GL/TextureParameter.h"
+#include "GL/TextureType.h"
+#include "GL/BlendFactor.h"
 #include "GL/Vertex.h"
 #include "GL/3x3Matrix.h"
 #include "GL/RenderContext.h"
+#include "GL/RenderWindow.h"
 #include "GL/RenderView.h"
 
 namespace retro

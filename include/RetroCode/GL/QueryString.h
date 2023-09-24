@@ -30,61 +30,17 @@
 
 namespace retro
 {
-	namespace scene
+	namespace gl
 	{
 
-		class AFX_EXT_API CPointNode : public CDrawableNode
+		enum EQueryString : UINT
 		{
-#pragma region Constructors
+			EQueryString_Vendor,
+			EQueryString_Renderer,
+			EQueryString_Version,
+			EQueryString_Extensions,
 
-		public:
-
-			DECLARE_SERIAL(CPointNode);
-
-		protected:
-
-			CPointNode();
-
-		public:
-
-			virtual ~CPointNode();
-
-		private:
-
-			CPointNode(const CPointNode& Node) = delete;
-			void operator=(const CPointNode& Node) = delete;
-
-#pragma endregion
-#pragma region Attributes
-
-		private:
-
-			core::TVector2f	m_ptPoint;
-			FLOAT			m_fSize;
-
-		public:
-
-			void SetPoint(FLOAT fX, FLOAT fY);
-			void SetPoint(const core::TVector2f& ptPoint);
-			void SetSize(FLOAT fSize);
-			const core::TVector2f& GetPoint() const;
-			FLOAT GetSize() const;
-
-#pragma endregion
-#pragma region Overridables
-
-		public:
-
-			void DoUpdate() override;
-			void DoDraw(const CSceneView* pView) const override;
-			void Serialize(CArchive& ar) override;
-#ifdef _DEBUG
-			void Dump(CDumpContext& dc) const override;
-			void AssertValid() const override;
-#endif
-
-#pragma endregion
-
+			EQueryString_COUNT
 		};
 
 	}

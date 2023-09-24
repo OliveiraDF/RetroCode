@@ -248,9 +248,9 @@ namespace retro
 
 		}
 
-		void CNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CNode::DoDraw(const CSceneView* pView) const
 		{
-			UNREFERENCED_PARAMETER(pRenderView);
+			UNREFERENCED_PARAMETER(pView);
 		}
 
 		void CNode::DoResize(const core::TVector2i& vSize)
@@ -308,17 +308,17 @@ namespace retro
 			}
 		}
 
-		void CNode::OnDraw(const gl::CRenderView* pRenderView) const
+		void CNode::OnDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
 			if (!m_bActive)
 			{
 				return;
 			}
 
-			DoDraw(pRenderView);
+			DoDraw(pView);
 
 			POSITION pos = m_Children.GetHeadPosition();
 			while (pos)
@@ -328,7 +328,7 @@ namespace retro
 				const CNode* pChild = DYNAMIC_DOWNCAST(CNode, pObject);
 				if (pChild)
 				{
-					pChild->OnDraw(pRenderView);
+					pChild->OnDraw(pView);
 				}
 			}
 		}

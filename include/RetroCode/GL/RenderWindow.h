@@ -30,58 +30,57 @@
 
 namespace retro
 {
-	namespace scene
+	namespace gl
 	{
 
-		class AFX_EXT_API CPointNode : public CDrawableNode
+		class AFX_EXT_API CRenderWindow : public CWnd, public CRenderContext
 		{
 #pragma region Constructors
 
+			DECLARE_DYNAMIC(CRenderWindow)
+
 		public:
 
-			DECLARE_SERIAL(CPointNode);
+			/**
+			* @brief Default constructor
+			*
+			*/
+			CRenderWindow();
+
+			/**
+			 * @brief Destructor
+			 *
+			 */
+			virtual ~CRenderWindow();
+
+#pragma endregion
+#pragma region Messages
 
 		protected:
 
-			CPointNode();
+			/**
+			 * @brief Declares that a message map will be used in a class to map messages to functions
+			 *
+			 */
+			DECLARE_MESSAGE_MAP()
 
 		public:
 
-			virtual ~CPointNode();
+			/**
+			 * @brief Called as a part of window creation
+			 *
+			 * @param lpCreateStruct Points to a CREATESTRUCT structure that contains information about the CWnd object being created
+			 *
+			 * @return 0 to continue the creation of the CWnd object
+			 *
+			 */
+			afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 
-		private:
-
-			CPointNode(const CPointNode& Node) = delete;
-			void operator=(const CPointNode& Node) = delete;
-
-#pragma endregion
-#pragma region Attributes
-
-		private:
-
-			core::TVector2f	m_ptPoint;
-			FLOAT			m_fSize;
-
-		public:
-
-			void SetPoint(FLOAT fX, FLOAT fY);
-			void SetPoint(const core::TVector2f& ptPoint);
-			void SetSize(FLOAT fSize);
-			const core::TVector2f& GetPoint() const;
-			FLOAT GetSize() const;
-
-#pragma endregion
-#pragma region Overridables
-
-		public:
-
-			void DoUpdate() override;
-			void DoDraw(const CSceneView* pView) const override;
-			void Serialize(CArchive& ar) override;
-#ifdef _DEBUG
-			void Dump(CDumpContext& dc) const override;
-			void AssertValid() const override;
-#endif
+			/**
+			 * @brief Called when CWnd is being destroyed
+			 *
+			 */
+			afx_msg void OnDestroy();
 
 #pragma endregion
 
@@ -89,3 +88,4 @@ namespace retro
 
 	}
 }
+

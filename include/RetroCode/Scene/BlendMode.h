@@ -30,11 +30,11 @@
 
 namespace retro
 {
-	namespace gl
+	namespace scene
 	{
 
 		/**
-		 * @ingroup gl 
+		 * @ingroup scene 
 		 * @brief Available blending modes for drawing
 		 *
 		 */

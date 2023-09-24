@@ -40,6 +40,8 @@ namespace retro
 
 #ifdef _DEBUG
 #define glCheck(glfunction) glfunction;{ HRESULT hr = retro::gl::GetOpenGLError(); if (FAILED(hr)) { retro::core::LogInterfaceError(_T("[OPENGL] "), hr, retro::core::ELogLevel_Error); } }
+#define wglCheck(wglfunction) wglfunction; { BOOL bRet = wglfunction; if (!bRet) { retro::core::LogWinError(_T("[WGL] "), GetLastError(), retro::core::ELogLevel_Error); } }
 #else
 #define glCheck(glfunction) glfunction;
+#define wglCheck(wglfunction) wglfunction;
 #endif

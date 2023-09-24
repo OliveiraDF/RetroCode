@@ -38,12 +38,12 @@ namespace retro
 		CDrawableNode::CDrawableNode()
 			: m_bNeedUpdateCache(TRUE)
 			, m_bVisible(TRUE)
-			, m_eBlendMode(gl::EBlendMode_Alpha)
+			, m_eBlendMode(EBlendMode_Alpha)
 		{
 
 		}
 
-		CDrawableNode::CDrawableNode(gl::EBlendMode eBlendMode)
+		CDrawableNode::CDrawableNode(EBlendMode eBlendMode)
 			: m_bNeedUpdateCache(TRUE)
 			, m_bVisible(TRUE)
 			, m_eBlendMode(eBlendMode)
@@ -55,7 +55,7 @@ namespace retro
 		CDrawableNode::CDrawableNode(const core::TColorRGBA& clrColor)
 			: m_bNeedUpdateCache(TRUE)
 			, m_bVisible(TRUE)
-			, m_eBlendMode(gl::EBlendMode_Alpha)
+			, m_eBlendMode(EBlendMode_Alpha)
 			, m_clrColor(clrColor)
 		{
 
@@ -64,14 +64,14 @@ namespace retro
 		CDrawableNode::CDrawableNode(LPCTSTR lpszShader)
 			: m_bNeedUpdateCache(TRUE)
 			, m_bVisible(TRUE)
-			, m_eBlendMode(gl::EBlendMode_Alpha)
+			, m_eBlendMode(EBlendMode_Alpha)
 			, m_clrColor(ColorRGBA_Black)
 			, m_strShader(lpszShader)
 		{
 
 		}
 
-		CDrawableNode::CDrawableNode(gl::EBlendMode eBlendMode, const core::TColorRGBA& clrColor, LPCTSTR lpszShader)
+		CDrawableNode::CDrawableNode(EBlendMode eBlendMode, const core::TColorRGBA& clrColor, LPCTSTR lpszShader)
 			: m_bNeedUpdateCache(TRUE)
 			, m_bVisible(TRUE)
 			, m_eBlendMode(eBlendMode)
@@ -92,7 +92,7 @@ namespace retro
 			m_bNeedUpdateCache = TRUE;
 		}
 
-		void CDrawableNode::SetBlendMode(gl::EBlendMode eBlendMode)
+		void CDrawableNode::SetBlendMode(EBlendMode eBlendMode)
 		{
 			m_eBlendMode = eBlendMode;
 			m_bNeedUpdateCache = TRUE;
@@ -131,7 +131,7 @@ namespace retro
 			return m_clrColor.Alpha;
 		}
 
-		gl::EBlendMode CDrawableNode::GetBlendMode() const
+		EBlendMode CDrawableNode::GetBlendMode() const
 		{
 			return m_eBlendMode;
 		}
@@ -151,17 +151,17 @@ namespace retro
 			return CNode::IsWorldVisible();
 		}
 
-		void CDrawableNode::OnDraw(const gl::CRenderView* pRenderView) const
+		void CDrawableNode::OnDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
 			if (!m_bVisible)
 			{
 				return;
 			}
 
-			CTransformableNode::OnDraw(pRenderView);
+			CTransformableNode::OnDraw(pView);
 		}
 
 		void CDrawableNode::Serialize(CArchive& ar)
@@ -174,11 +174,11 @@ namespace retro
 			}
 			else
 			{
-				INT nBlendMode = gl::EBlendMode_None;
+				INT nBlendMode = EBlendMode_None;
 
 				ar >> m_bVisible >> nBlendMode >> m_clrColor.Red >> m_clrColor.Green >> m_clrColor.Blue >> m_clrColor.Alpha >> m_strShader;
 
-				m_eBlendMode = static_cast<gl::EBlendMode>(nBlendMode);
+				m_eBlendMode = static_cast<EBlendMode>(nBlendMode);
 			}
 		}
 
@@ -189,7 +189,7 @@ namespace retro
 			CTransformableNode::Dump(dc);
 
 			dc << _T("Visible: ") << m_bVisible;
-			dc << _T("BlendMode: ") << gl::BlendModeToString(m_eBlendMode);
+			dc << _T("BlendMode: ") << BlendModeToString(m_eBlendMode);
 			dc << _T("Color: (") << m_clrColor.Red << _T(";") << m_clrColor.Green << _T(";") << m_clrColor.Blue << _T(";") << m_clrColor.Alpha << _T(")");
 			dc << _T("Shader: ") << m_strShader;
 		}
@@ -199,7 +199,7 @@ namespace retro
 			CTransformableNode::AssertValid();
 
 			ASSERT(m_eBlendMode >= 0);
-			ASSERT(m_eBlendMode < gl::EBlendMode_COUNT);
+			ASSERT(m_eBlendMode < EBlendMode_COUNT);
 		}
 
 #endif

@@ -52,18 +52,47 @@ namespace retro
 			CSceneDocument* GetDocument() const;
 
 #pragma endregion
+#pragma region Operations
+
+		public:
+
+			/**
+			 * @brief Begins drawing
+			 *
+			 * @param pDC The device context to draw to
+			 * @param clrClear The clear color
+			 *
+			 */
+			void BeginDraw(CDC* pDC, const core::TColorRGBA& clrClear);
+
+			/**
+			 * @brief Draws the specified vertices
+			 *
+			 * @param pVertices The vertices to draw
+			 * @param nVertexCount The number of vertices to draw
+			 * @param eType The primitive type to draw
+			 * @param uTextureID The texture ID to use
+			 * @param eBlendMode The blend mode to use
+			 * @param uShaderProgram The shader program to use
+			 *
+			 */
+			void Draw(const gl::TVertex* pVertices, INT nVertexCount, gl::EPrimitiveType eType, UINT uTextureID = 0, EBlendMode eBlendMode = EBlendMode_Alpha, UINT uShaderProgram = 0) const;
+
+			/**
+			 * @brief Ends drawing
+			 *
+			 * @param pDC The device context to draw to
+			 *
+			 */
+			void EndDraw(CDC* pDC);
+
+#pragma endregion
 #pragma region Overridables
 
 			BOOL PreCreateWindow(CREATESTRUCT& cs) override;
 			void OnInitialUpdate() override;
 			void OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint) override;
 			void OnDraw(CDC* pDC) override;   
-#ifdef _DEBUG
-			void AssertValid() const override;
-#ifndef _WIN32_WCE
-			void Dump(CDumpContext& dc) const override;
-#endif
-#endif
 
 #pragma endregion
 #pragma region Implementations

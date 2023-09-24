@@ -100,14 +100,14 @@ namespace retro
 			}
 		}
 
-		void CPointNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CPointNode::DoDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
-			pRenderView->PointSize(m_fSize);
-			pRenderView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Points, 0, GetBlendMode(), 0);
-			pRenderView->PointSize(1.f);
+			pView->PointSize(m_fSize);
+			pView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Points, 0, GetBlendMode(), 0);
+			pView->PointSize(1.f);
 		}
 
 		void CPointNode::Serialize(CArchive& ar)

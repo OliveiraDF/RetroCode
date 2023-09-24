@@ -169,17 +169,17 @@ namespace retro
 			return mMatrix;
 		}
 
-		void CTransformableNode::OnDraw(const gl::CRenderView* pRenderView) const
+		void CTransformableNode::OnDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
-			pRenderView->PushMatrix();
-			pRenderView->MultMatrix(Get3x3Matrix());
+			pView->PushMatrix();
+			pView->MultMatrix(Get3x3Matrix().GetMatrix());
 
-			CNode::OnDraw(pRenderView);
+			CNode::OnDraw(pView);
 
-			pRenderView->PopMatrix();
+			pView->PopMatrix();
 		}
 
 		void CTransformableNode::Serialize(CArchive& ar)
@@ -188,12 +188,17 @@ namespace retro
 
 			if (ar.IsStoring())
 			{
-				ar << m_vPosition.X << m_vPosition.Y << m_fRotation << m_vScale.X << m_vScale.Y << m_vOrigin.X << m_vOrigin.Y;
+				ar << m_fRotation;
 			}
 			else
 			{
-				ar >> m_vPosition.X >> m_vPosition.Y >> m_fRotation >> m_vScale.X >> m_vScale.Y >> m_vOrigin.X >> m_vOrigin.Y;
+				ar >> m_fRotation;
 			}
+
+			m_vPosition.Serialize(ar);
+			m_vScale.Serialize(ar);
+			m_vOrigin.Serialize(ar);
+
 		}
 
 #ifdef _DEBUG

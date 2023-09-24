@@ -34,9 +34,10 @@
 #include "MFC.h"
 #include "GL.h"
 
-#include "Scene/Node.h"
+#include "Scene/BlendMode.h"
 #include "Scene/SceneDocument.h"
 #include "Scene/SceneView.h"
+#include "Scene/Node.h"
 #include "Scene/ViewNode.h"
 #include "Scene/TransformableNode.h"
 #include "Scene/DrawableNode.h"

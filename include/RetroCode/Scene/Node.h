@@ -100,12 +100,12 @@ namespace retro
 			virtual const CViewNode* GetWorldView() const;
 			virtual void DoInitialUpdate();
 			virtual void DoUpdate();
-			virtual void DoDraw(const gl::CRenderView* pRenderView) const;
+			virtual void DoDraw(const CSceneView* pView) const;
 			virtual void DoResize(const core::TVector2i& vSize);
 			virtual BOOL IsWorldVisible() const;		
 			virtual void OnInitialUpdate();
 			virtual void OnUpdate();
-			virtual void OnDraw(const gl::CRenderView* pRenderView) const;
+			virtual void OnDraw(const CSceneView* pView) const;
 			virtual void OnResize(const core::TVector2i& vSize);
 
 		public:

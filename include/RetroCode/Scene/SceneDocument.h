@@ -33,6 +33,8 @@ namespace retro
 	namespace scene
 	{
 
+		class CNode;
+
 		class CSceneDocument : public mfc::CDocumentEx
 		{
 #pragma region Constructors

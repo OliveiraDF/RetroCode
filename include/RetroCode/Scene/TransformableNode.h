@@ -91,7 +91,7 @@ namespace retro
 		public:
 
 			gl::C3x3Matrix Get3x3Matrix() const override;
-			void OnDraw(const gl::CRenderView* pRenderView) const override;
+			void OnDraw(const CSceneView* pView) const override;
 			void Serialize(CArchive& ar) override;
 #ifdef _DEBUG
 			void Dump(CDumpContext& dc) const override;

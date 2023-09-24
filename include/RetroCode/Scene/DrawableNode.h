@@ -44,10 +44,10 @@ namespace retro
 		protected:
 
 			CDrawableNode();
-			explicit CDrawableNode(gl::EBlendMode eBlendMode);
+			explicit CDrawableNode(EBlendMode eBlendMode);
 			explicit CDrawableNode(const core::TColorRGBA& clrColor);
 			explicit CDrawableNode(LPCTSTR lpszShader);
-			CDrawableNode(gl::EBlendMode eBlendMode, const core::TColorRGBA& clrColor, LPCTSTR lpszShader = NULL);
+			CDrawableNode(EBlendMode eBlendMode, const core::TColorRGBA& clrColor, LPCTSTR lpszShader = NULL);
 
 		public:
 
@@ -69,15 +69,15 @@ namespace retro
 		private:
 
 			BOOL				m_bVisible;
-			gl::EBlendMode		m_eBlendMode;
+			EBlendMode			m_eBlendMode;
 			core::TColorRGBA	m_clrColor;
 			CString				m_strShader;
 
 		public:
 
 			void SetVisible(BOOL bVisible);
-			void SetBlendMode(gl::EBlendMode eBlendMode);
-			gl::EBlendMode GetBlendMode() const;
+			void SetBlendMode(EBlendMode eBlendMode);
+			EBlendMode GetBlendMode() const;
 			void SetColor(const core::TColorRGBA& cColor);
 			BOOL IsVisible() const;
 			const core::TColorRGBA& GetColor() const;
@@ -92,7 +92,7 @@ namespace retro
 		public:
 
 			BOOL IsWorldVisible() const override;
-			void OnDraw(const gl::CRenderView* pRenderView) const override;
+			void OnDraw(const CSceneView* pView) const override;
 			void Serialize(CArchive& ar) override;
 #ifdef _DEBUG
 			void Dump(CDumpContext& dc) const override;

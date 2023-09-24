@@ -95,12 +95,12 @@ namespace retro
 			}
 		}
 
-		void CRectangleNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CRectangleNode::DoDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
-			pRenderView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Quads, 0, GetBlendMode(), 0);
+			pView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Quads, 0, GetBlendMode(), 0);
 		}
 
 		void CRectangleNode::Serialize(CArchive& ar)

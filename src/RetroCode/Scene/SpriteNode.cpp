@@ -156,15 +156,15 @@ namespace retro
 			}
 		}
 
-		void CSpriteNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CSpriteNode::DoDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
 			const UINT uID = 0;
 			const UINT uShaderProgram = 0;
 
-			pRenderView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Quads, uID, GetBlendMode(), uShaderProgram);
+			pView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Quads, uID, GetBlendMode(), uShaderProgram);
 		}
 
 		void CSpriteNode::Serialize(CArchive& ar)

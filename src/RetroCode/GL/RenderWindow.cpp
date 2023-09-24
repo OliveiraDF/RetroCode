@@ -26,66 +26,59 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
 namespace retro
 {
-	namespace scene
+	namespace gl
 	{
 
-		class AFX_EXT_API CPointNode : public CDrawableNode
-		{
 #pragma region Constructors
 
-		public:
+		IMPLEMENT_DYNAMIC(CRenderWindow, CWnd)
 
-			DECLARE_SERIAL(CPointNode);
+		CRenderWindow::CRenderWindow()
+		{
 
-		protected:
+		}
 
-			CPointNode();
+		CRenderWindow::~CRenderWindow()
+		{
 
-		public:
-
-			virtual ~CPointNode();
-
-		private:
-
-			CPointNode(const CPointNode& Node) = delete;
-			void operator=(const CPointNode& Node) = delete;
+		}
 
 #pragma endregion
-#pragma region Attributes
+#pragma region Messages
 
-		private:
+		BEGIN_MESSAGE_MAP(CRenderWindow, CWnd)
+			ON_WM_CREATE()
+			ON_WM_DESTROY()
+		END_MESSAGE_MAP()
 
-			core::TVector2f	m_ptPoint;
-			FLOAT			m_fSize;
+		int CRenderWindow::OnCreate(LPCREATESTRUCT lpCreateStruct)
+		{
+			if (CWnd::OnCreate(lpCreateStruct) == -1)
+			{
+				return -1;
+			}
 
-		public:
+			HRESULT hr = CreateContext(GetDC());
+			if (FAILED(hr))
+			{
+				return -1;
+			}
 
-			void SetPoint(FLOAT fX, FLOAT fY);
-			void SetPoint(const core::TVector2f& ptPoint);
-			void SetSize(FLOAT fSize);
-			const core::TVector2f& GetPoint() const;
-			FLOAT GetSize() const;
+			return 0;
+		}
+
+		void CRenderWindow::OnDestroy()
+		{
+			CWnd::OnDestroy();
+
+			DeleteContext();
+		}
 
 #pragma endregion
-#pragma region Overridables
-
-		public:
-
-			void DoUpdate() override;
-			void DoDraw(const CSceneView* pView) const override;
-			void Serialize(CArchive& ar) override;
-#ifdef _DEBUG
-			void Dump(CDumpContext& dc) const override;
-			void AssertValid() const override;
-#endif
-
-#pragma endregion
-
-		};
 
 	}
 }

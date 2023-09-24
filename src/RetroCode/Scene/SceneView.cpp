@@ -68,6 +68,77 @@ namespace retro
 #endif
 
 #pragma endregion
+#pragma region Operations
+
+		void CSceneView::BeginDraw(CDC* pDC, const core::TColorRGBA& clrClear)
+		{
+			ASSERT(pDC);
+			ASSERT_VALID(pDC);
+
+			MakeCurrent(pDC);
+			ClearColor(clrClear);
+			Clear();
+		}
+
+		void CSceneView::Draw(const gl::TVertex* pVertices, INT nVertexCount, gl::EPrimitiveType eType, UINT uTextureID, EBlendMode eBlendMode, UINT uShaderProgram) const
+		{
+			static constexpr const struct
+			{
+				gl::EBlendFactorSrc eSrcFactor;
+				gl::EBlendFactorDst eDstFactor;
+
+			} BLENDMODES[] =
+			{
+				{ gl::EBlendFactorSrc_Src_Alpha, gl::EBlendFactorDst_One_Minus_Src_Alpha },	/* EBlendMode_Alpha */
+				{ gl::EBlendFactorSrc_Src_Alpha, gl::EBlendFactorDst_One },					/* EBlendMode_Add */
+				{ gl::EBlendFactorSrc_Dst_Color, gl::EBlendFactorDst_Zero },				/* EBlendMode_Multiply */
+				{ gl::EBlendFactorSrc_One, gl::EBlendFactorDst_Zero },						/* EBlendMode_None */
+			};
+			C_ASSERT(EBlendMode_COUNT == ARRAYSIZE(BLENDMODES));
+
+			ASSERT(eBlendMode >= 0);
+			ASSERT(eBlendMode < EBlendMode_COUNT);
+			ASSERT(nVertexCount > 0);
+
+			if (!pVertices)
+			{
+				return;
+			}
+
+			if (eBlendMode < 0)
+			{
+				return;
+			}
+
+			if (eBlendMode >= EBlendMode_COUNT)
+			{
+				return;
+			}
+
+			const BYTE* pData = reinterpret_cast<const BYTE*>(pVertices);
+
+			BlendFunc(BLENDMODES[eBlendMode].eSrcFactor, BLENDMODES[eBlendMode].eDstFactor);
+			BindTexture(gl::ETextureType_2D, uTextureID);
+			UseProgramARB(uShaderProgram);
+			Uniform1iARB(uTextureID, 0);
+			VertexPointer(2, gl::EDataType_Float, sizeof(gl::TVertex), pData + 0);
+			ColorPointer(4, gl::EDataType_Unsigned_Byte, sizeof(gl::TVertex), pData + 8);
+			TexCoordPointer(2, gl::EDataType_Float, sizeof(gl::TVertex), pData + 12);
+
+			DrawArrays(eType, 0, nVertexCount);
+		}
+
+		void CSceneView::EndDraw(CDC* pDC)
+		{
+			ASSERT(pDC);
+			ASSERT_VALID(pDC);
+
+			Flush();
+			SwapBuffers(pDC);
+			UnmakeCurrent();
+		}
+
+#pragma endregion
 #pragma region Overridables
 
 		BOOL CSceneView::PreCreateWindow(CREATESTRUCT& cs)
@@ -101,31 +172,10 @@ namespace retro
 		{
 			const CNode* pRoot = GetRootDocument();
 
-			HRESULT hr;
-
 			BeginDraw(pDC, ColorRGBA_Gray);
-
 			pRoot->OnDraw(this);
-
 			EndDraw(pDC);
 		}
-
-#ifdef _DEBUG
-
-		void CSceneView::AssertValid() const
-		{
-			gl::CRenderView::AssertValid();
-		}
-
-#ifndef _WIN32_WCE
-
-		void CSceneView::Dump(CDumpContext& dc) const
-		{
-			gl::CRenderView::Dump(dc);
-		}
-
-#endif
-#endif
 
 #pragma endregion
 #pragma region Implementations
@@ -173,6 +223,17 @@ namespace retro
 			{
 				return -1;
 			}
+
+			Disable(gl::EFeatureType_Alpha_Test);
+			Disable(gl::EFeatureType_Cull_Face);
+			Disable(gl::EFeatureType_Depth_Test);
+			Disable(gl::EFeatureType_Lightning);
+			Enable(gl::EFeatureType_Blend);
+			Enable(gl::EFeatureType_Texture_2D);
+			MatrixMode(gl::EMatrixMode_ModelView);
+			EnableClientState(gl::EArrayType_Vertex);
+			EnableClientState(gl::EArrayType_Color);
+			EnableClientState(gl::EArrayType_Texture_Coord);
 
 			return 0;
 		}

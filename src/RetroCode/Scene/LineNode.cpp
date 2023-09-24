@@ -123,14 +123,14 @@ namespace retro
 			}
 		}
 
-		void CLineNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CLineNode::DoDraw(const CSceneView* pView) const
 		{
-			ASSERT(pRenderView);
-			ASSERT_VALID(pRenderView);
+			ASSERT(pView);
+			ASSERT_VALID(pView);
 
-			pRenderView->LineWidth(m_fThickness);
-			pRenderView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Lines, 0, GetBlendMode(), 0);
-			pRenderView->LineWidth(1.f);
+			pView->LineWidth(m_fThickness);
+			pView->Draw(m_Cache.GetData(), m_Cache.GetSize(), gl::EPrimitiveType_Lines, 0, GetBlendMode(), 0);
+			pView->LineWidth(1.f);
 		}
 
 		void CLineNode::Serialize(CArchive& ar)

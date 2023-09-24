@@ -26,54 +26,26 @@
  *
  */
 
-#include "pch.h"
+#pragma once
 
 namespace retro
 {
 	namespace gl
 	{
 
-		static constexpr LPCTSTR BLENDMODES[] =
+		enum EFeatureType : UINT
 		{
-			_T("Alpha"),
-			_T("Add"),
-			_T("Multiply"),
-			_T("None")
+			EFeatureType_Alpha_Test,
+			EFeatureType_Blend,
+			EFeatureType_Cull_Face,
+			EFeatureType_Depth_Test,
+			EFeatureType_Lightning,
+			EFeatureType_Line_Smooth,
+			EFeatureType_Point_Smooth,
+			EFeatureType_Texture_2D,
+
+			EFeatureType_COUNT
 		};
-		C_ASSERT(EBlendMode_COUNT == ARRAYSIZE(BLENDMODES));
-
-		LPCTSTR BlendModeToString(EBlendMode eBlendMode)
-		{
-			ASSERT(eBlendMode >= 0);
-			ASSERT(eBlendMode < EBlendMode_COUNT);
-
-			if (eBlendMode < 0)
-			{
-				return NULL;
-			}
-
-			if (eBlendMode >= EBlendMode_COUNT)
-			{
-				return NULL;
-			}
-
-			return BLENDMODES[eBlendMode];
-		}
-
-		EBlendMode StringToBlendMode(LPCTSTR lpszBlendMode)
-		{
-			for (INT i = 0; i < EBlendMode_COUNT; i++)
-			{
-				if (StrCmp(BLENDMODES[i], lpszBlendMode) == 0)
-				{
-					return static_cast<EBlendMode>(i);
-				}
-			}
-
-			ASSERT(FALSE);
-
-			return EBlendMode_INVALID;
-		}
 
 	}
 }

@@ -35,27 +35,6 @@ namespace retro
 
 		class AFX_EXT_API CRenderContext
 		{
-		public:
-
-			enum EQueryString : UINT
-			{
-				EQueryString_Vendor,
-				EQueryString_Renderer,
-				EQueryString_Version,
-				EQueryString_Extensions,
-
-				EQueryString_COUNT
-			};
-
-			enum EMatrixMode : UINT
-			{
-				EMatrixMode_ModelView,
-				EMatrixMode_Projection,
-				EMatrixMode_Texture,
-
-				EMatrixMode_COUNT
-			};
-
 #pragma region Constructors
 
 		public:
@@ -68,33 +47,55 @@ namespace retro
 
 		private:
 
-			BOOL m_bGLEXTInitialized;
-
-		public:
-
-			BOOL IsGLEXTPrototypesInitialized() const;
+			HGLRC	m_hGLRC;
 
 #pragma endregion
 #pragma region Operations
 
 		public:
 
-			HRESULT InitializeGLEXTPrototypes();
-			CString GetString(EQueryString eQueryString) const;
+			HRESULT CreateContext(CDC* pDC);
+			void Begin(EPrimitiveType eType) const;
+			void BindTexture(ETextureType eTextureType, UINT uTexture) const;
+			void BlendFunc(EBlendFactorSrc eSrcFactor, EBlendFactorDst eDstFactor) const;
+			void Build2DMipmaps(INT nComponents, core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
+			void CallList(UINT uList) const;
 			void Clear() const;
 			void ClearColor(const core::TColorRGBA& clrClear) const;
+			void ColorPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
+			void DeleteContext();
+			void Disable(EFeatureType eType) const;
+			void DrawArrays(EPrimitiveType eType, INT nFirst, INT nCount) const;
+			void Enable(EFeatureType eType) const;
+			void EnableClientState(EArrayType eType) const;
+			void End() const;
+			void EndList() const;
 			void Flush() const;
-			void Viewport(const core::TIntRect& rcViewport) const;
-			void MatrixMode(EMatrixMode eMatrixMode) const;
+			void GenTextures(INT nCount, UINT* pTextures) const;
+			CString GetString(EQueryString eQueryString) const;
+			void LineWidth(FLOAT fWidth) const;
 			void LoadIdentity() const;
-			void LoadMatrix(const C3x3Matrix& mMatrix) const;
+			void LoadMatrix(const FLOAT* pMatrix) const;
+			void MakeCurrent(CDC* pDC) const;
+			void MatrixMode(EMatrixMode eMatrixMode) const;
+			void MultMatrix(const FLOAT* pMatrix) const;
+			void NewList(UINT uList, ECompilationMode eMode) const;
 			void PushMatrix() const;
-			void MultMatrix(const C3x3Matrix& mMatrix) const;
 			void PopMatrix() const;
 			void PointSize(FLOAT fSize) const;
-			void LineWidth(FLOAT fWidth) const;
-			void UseProgramARB(UINT uHandleARB) const;
+			void Rotate(FLOAT fAngle, FLOAT fX, FLOAT fY, FLOAT fZ) const;
+			void Scale(FLOAT fX, FLOAT fY, FLOAT fZ) const;
+			void SwapBuffers(CDC* pDC) const;
+			void TexCoordPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
+			void TexImage2D(INT nLevels, INT nComponents, const core::TVector2i& vSize, INT nBorder, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
+			void TexParameteri(ETextureType eType, ETextureParameter eParam, INT nParam) const;
+			void TexParameterf(ETextureType eType, ETextureParameter eParam, FLOAT fParam) const;
+			void Translate(FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void Uniform1iARB(INT nLocation, INT nV0) const;
+			void UnmakeCurrent() const;
+			void UseProgramARB(UINT uHandleARB) const;
+			void VertexPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
+			void Viewport(const core::TIntRect& rcViewport) const;
 
 #pragma endregion
 

@@ -72,7 +72,7 @@ namespace retro
 		public:
 
 			void DoUpdate() override;
-			void DoDraw(const gl::CRenderView* pRenderView) const override;
+			void DoDraw(const CSceneView* pView) const override;
 			void Serialize(CArchive& ar) override;
 #ifdef _DEBUG
 			void Dump(CDumpContext& dc) const override;

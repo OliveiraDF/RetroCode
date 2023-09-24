@@ -108,7 +108,7 @@ namespace retro
 			gl::C3x3Matrix Get3x3Matrix() const override;
 			CViewNode* GetWorldView() override;
 			const CViewNode* GetWorldView() const override;
-			void DoDraw(const gl::CRenderView* pRenderView) const override;
+			void DoDraw(const CSceneView* pView) const override;
 			void DoResize(const core::TVector2i& szSize) override;
 			void Serialize(CArchive& ar) override;
 #ifdef _DEBUG

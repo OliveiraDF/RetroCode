@@ -175,12 +175,12 @@ namespace retro
 			return GetWorldView();
 		}
 
-		void CViewNode::DoDraw(const gl::CRenderView* pRenderView) const
+		void CViewNode::DoDraw(const CSceneView* pView) const
 		{
-			CNode::DoDraw(pRenderView);
+			CNode::DoDraw(pView);
 
 			CRect rcWnd;
-			pRenderView->GetClientRect(rcWnd);
+			pView->GetClientRect(rcWnd);
 
 			const FLOAT fWindowWidth = static_cast<FLOAT>(rcWnd.Width());
 			const FLOAT fWindowHeight = static_cast<FLOAT>(rcWnd.Height());
@@ -193,14 +193,14 @@ namespace retro
 
 			rcViewport.Point.Y = static_cast<int32_t>(fWindowHeight) - (rcViewport.Point.Y + rcViewport.Size.Y);
 			
-			pRenderView->Viewport(rcViewport);
+			pView->Viewport(rcViewport);
 
-			pRenderView->MatrixMode(gl::CRenderView::EMatrixMode_Projection);
-			pRenderView->LoadIdentity();
-			pRenderView->LoadMatrix(Get3x3Matrix());
+			pView->MatrixMode(gl::EMatrixMode_Projection);
+			pView->LoadIdentity();
+			pView->LoadMatrix(Get3x3Matrix().GetMatrix());
 
-			pRenderView->MatrixMode(gl::CRenderView::EMatrixMode_ModelView);
-			pRenderView->LoadIdentity();
+			pView->MatrixMode(gl::EMatrixMode_ModelView);
+			pView->LoadIdentity();
 		}
 
 		void CViewNode::DoResize(const core::TVector2i& szSize)
@@ -243,16 +243,20 @@ namespace retro
 
 			if (ar.IsStoring())
 			{
-				ar << m_ptCenter.X << m_ptCenter.Y << m_szSize.X << m_szSize.Y << m_fRotation << m_rcViewport.Point.X << m_rcViewport.Point.Y << m_rcViewport.Size.X << m_rcViewport.Size.Y << m_eBehavior;
+				ar << m_fRotation << m_eBehavior;
 			}
 			else
 			{
 				INT nBehavior = 0;
 
-				ar >> m_ptCenter.X >> m_ptCenter.Y >> m_szSize.X >> m_szSize.Y >> m_fRotation >> m_rcViewport.Point.X >> m_rcViewport.Point.Y >> m_rcViewport.Size.X >> m_rcViewport.Size.Y >> nBehavior;
+				ar >> m_fRotation >> nBehavior;
 
 				m_eBehavior = static_cast<EBehavior>(nBehavior);
 			}
+
+			m_ptCenter.Serialize(ar);
+			m_szSize.Serialize(ar);
+			m_rcViewport.Serialize(ar);
 		}
 
 #ifdef _DEBUG

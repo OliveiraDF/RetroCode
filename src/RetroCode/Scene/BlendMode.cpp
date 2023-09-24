@@ -26,66 +26,54 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
 namespace retro
 {
 	namespace scene
 	{
 
-		class AFX_EXT_API CPointNode : public CDrawableNode
+		static constexpr LPCTSTR BLENDMODES[] =
 		{
-#pragma region Constructors
-
-		public:
-
-			DECLARE_SERIAL(CPointNode);
-
-		protected:
-
-			CPointNode();
-
-		public:
-
-			virtual ~CPointNode();
-
-		private:
-
-			CPointNode(const CPointNode& Node) = delete;
-			void operator=(const CPointNode& Node) = delete;
-
-#pragma endregion
-#pragma region Attributes
-
-		private:
-
-			core::TVector2f	m_ptPoint;
-			FLOAT			m_fSize;
-
-		public:
-
-			void SetPoint(FLOAT fX, FLOAT fY);
-			void SetPoint(const core::TVector2f& ptPoint);
-			void SetSize(FLOAT fSize);
-			const core::TVector2f& GetPoint() const;
-			FLOAT GetSize() const;
-
-#pragma endregion
-#pragma region Overridables
-
-		public:
-
-			void DoUpdate() override;
-			void DoDraw(const CSceneView* pView) const override;
-			void Serialize(CArchive& ar) override;
-#ifdef _DEBUG
-			void Dump(CDumpContext& dc) const override;
-			void AssertValid() const override;
-#endif
-
-#pragma endregion
-
+			_T("Alpha"),
+			_T("Add"),
+			_T("Multiply"),
+			_T("None")
 		};
+		C_ASSERT(EBlendMode_COUNT == ARRAYSIZE(BLENDMODES));
+
+		LPCTSTR BlendModeToString(EBlendMode eBlendMode)
+		{
+			ASSERT(eBlendMode >= 0);
+			ASSERT(eBlendMode < EBlendMode_COUNT);
+
+			if (eBlendMode < 0)
+			{
+				return NULL;
+			}
+
+			if (eBlendMode >= EBlendMode_COUNT)
+			{
+				return NULL;
+			}
+
+			return BLENDMODES[eBlendMode];
+		}
+
+		EBlendMode StringToBlendMode(LPCTSTR lpszBlendMode)
+		{
+			for (INT i = 0; i < EBlendMode_COUNT; i++)
+			{
+				if (StrCmp(BLENDMODES[i], lpszBlendMode) == 0)
+				{
+					return static_cast<EBlendMode>(i);
+				}
+			}
+
+			ASSERT(FALSE);
+
+			return EBlendMode_INVALID;
+		}
 
 	}
 }

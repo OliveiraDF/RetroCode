@@ -36,6 +36,8 @@ namespace retro
 		class AFX_EXT_API CRenderView : public CView, public CRenderContext
 		{
 
+#pragma region Constructors
+
 			/**
 			 * @brief Enables objects of CView-derived classes to be created dynamically at run time
 			 *
@@ -55,38 +57,9 @@ namespace retro
 			 *
 			 */
 			virtual ~CRenderView();
-			
-		public:
 
-			/**
-			 * @brief Begins drawing
-			 *
-			 * @param pDC The device context to draw to
-			 * @param clrClear The clear color
-			 *
-			 */
-			void BeginDraw(CDC* pDC, const core::TColorRGBA& clrClear);
-
-			/**
-			 * @brief Draws the specified vertices
-			 *
-			 * @param pVertices The vertices to draw
-			 * @param nVertexCount The number of vertices to draw
-			 * @param eType The primitive type to draw
-			 * @param uTextureID The texture ID to use
-			 * @param eBlendMode The blend mode to use
-			 * @param uShaderProgram The shader program to use
-			 *
-			 */
-			void Draw(const TVertex* pVertices, INT nVertexCount, EPrimitiveType eType, UINT uTextureID = 0, EBlendMode eBlendMode = EBlendMode_Alpha, UINT uShaderProgram = 0) const;
-
-			/**
-			 * @brief Ends drawing
-			 *
-			 * @param pDC The device context to draw to
-			 *
-			 */
-			void EndDraw(CDC* pDC);
+#pragma endregion
+#pragma region Overridables
 
 		public:
 
@@ -108,29 +81,8 @@ namespace retro
 			 */
 			void OnDraw(CDC* pDC) override;   
 
-#ifdef _DEBUG
-			/**
-			 * @brief Produces a diagnostic dump of the object
-			 *
-			 * @param dc The diagnostic dump context for dumping
-			 *
-			 */
-			void AssertValid() const override;
-#ifndef _WIN32_WCE
-			/**
-			 * @brief Validates the object's integrity
-			 *
-			 */
-			void Dump(CDumpContext& dc) const override;
-#endif
-#endif
-
-		private:
-
-			/**
-			 * Member data
-			 */
-			HGLRC m_hGLRC;
+#pragma endregion
+#pragma region Messages
 
 		protected:
 
@@ -157,6 +109,8 @@ namespace retro
 			 *
 			 */
 			afx_msg void OnDestroy();
+
+#pragma endregion
 
 		};
 
