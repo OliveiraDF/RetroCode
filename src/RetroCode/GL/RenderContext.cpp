@@ -305,16 +305,16 @@ namespace retro
 
 		void CRenderContext::Begin(EPrimitiveType eType) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= EPrimitiveType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < EPrimitiveType_COUNT);
 
 			glCheck(glBegin(eType));
 		}
 
 		void CRenderContext::BindTexture(ETextureType eType, UINT uTexture) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= ETextureType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < ETextureType_COUNT);
 
 			glCheck(glBindTexture(ToGL(eType), uTexture));
 		}
@@ -388,6 +388,14 @@ namespace retro
 			glCheck(glColorPointer(nSize, ToGL(eDataType), nStride, pPointer));
 		}
 
+		void CRenderContext::DeleteTextures(INT nCount, UINT* pTextures) const
+		{
+			ASSERT(nCount > 0);
+			ASSERT(pTextures);
+
+			glCheck(glDeleteTextures(nCount, pTextures));
+		}
+
 		void CRenderContext::DeleteContext()
 		{
 			if (m_hGLRC)
@@ -399,32 +407,32 @@ namespace retro
 
 		void CRenderContext::Disable(EFeatureType eType) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= EFeatureType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < EFeatureType_COUNT);
 
 			glCheck(glDisable(ToGL(eType)));
 		}
 
 		void CRenderContext::DrawArrays(EPrimitiveType eType, INT nFirst, INT nCount) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= EPrimitiveType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < EPrimitiveType_COUNT);
 
 			glCheck(glDrawArrays(eType, nFirst, nCount));
 		}
 
 		void CRenderContext::Enable(EFeatureType eType) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= EFeatureType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < EFeatureType_COUNT);
 
 			glCheck(glEnable(ToGL(eType)));
 		}
 
 		void CRenderContext::EnableClientState(EArrayType eType) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= EArrayType_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < EArrayType_COUNT);
 
 			glCheck(glEnableClientState(ToGL(eType)));
 		}
@@ -448,7 +456,7 @@ namespace retro
 		{
 			ASSERT(nCount > 0);
 			ASSERT(pTextures);
-
+			
 			glCheck(glGenTextures(nCount, pTextures));
 		}
 
@@ -510,6 +518,11 @@ namespace retro
 			glCheck(glNewList(uList, ToGL(eMode)));
 		}
 
+		void CRenderContext::Ortho(const core::TIntRect& rcView, DOUBLE fNear, DOUBLE fFar) const
+		{
+			glCheck(glOrtho(rcView.Left(), rcView.Right(), rcView.Bottom(), rcView.Top(), fNear, fFar));
+		}
+
 		void CRenderContext::PushMatrix() const
 		{
 			glCheck(glPushMatrix());
@@ -537,12 +550,9 @@ namespace retro
 			glCheck(glScalef(fX, fY, fZ));
 		}
 
-		void CRenderContext::SwapBuffers(CDC* pDC) const
+		void CRenderContext::TexCoord2(const core::TVector2f& vCoord) const
 		{
-			ASSERT(pDC);
-			ASSERT_VALID(pDC);
-
-			wglCheck(::SwapBuffers(pDC->GetSafeHdc()));
+			glCheck(glTexCoord2f(vCoord.X, vCoord.Y));
 		}
 
 		void CRenderContext::TexCoordPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const
@@ -589,22 +599,53 @@ namespace retro
 
 		void CRenderContext::TexParameteri(ETextureType eType, ETextureParameter eParam, INT nParam) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= ETextureType_COUNT);
-			ASSERT(eParam > 0);
-			ASSERT(eParam <= ETextureParameter_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < ETextureType_COUNT);
+			ASSERT(eParam >= 0);
+			ASSERT(eParam < ETextureParameter_COUNT);
 
 			glCheck(glTexParameteri(ToGL(eType), ToGL(eParam), nParam));
 		}
 
 		void CRenderContext::TexParameterf(ETextureType eType, ETextureParameter eParam, FLOAT fParam) const
 		{
-			ASSERT(eType > 0);
-			ASSERT(eType <= ETextureType_COUNT);
-			ASSERT(eParam > 0);
-			ASSERT(eParam <= ETextureParameter_COUNT);
+			ASSERT(eType >= 0);
+			ASSERT(eType < ETextureType_COUNT);
+			ASSERT(eParam >= 0);
+			ASSERT(eParam < ETextureParameter_COUNT);
 
 			glCheck(glTexParameterf(ToGL(eType), ToGL(eParam), fParam));
+		}
+
+		void CRenderContext::TexSubImage2D(INT nLevels, const core::TVector2i& vOffset, const core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const
+		{
+			ASSERT(nLevels >= 0);
+			ASSERT(vOffset.X >= 0);
+			ASSERT(vOffset.Y >= 0);
+			ASSERT(vSize.X > 0);
+			ASSERT(vSize.Y > 0);
+			ASSERT(eFormat == EFormatType_Color_Index ||
+				eFormat == EFormatType_Red ||
+				eFormat == EFormatType_Green ||
+				eFormat == EFormatType_Blue ||
+				eFormat == EFormatType_Alpha ||
+				eFormat == EFormatType_RGB ||
+				eFormat == EFormatType_RGBA ||
+				eFormat == EFormatType_BGR_Ext ||
+				eFormat == EFormatType_BGRA_Ext ||
+				eFormat == EFormatType_Luminance ||
+				eFormat == EFormatType_Luminance_Alpha);
+			ASSERT(eData == EDataType_Byte ||
+				eData == EDataType_Unsigned_Byte ||
+				eData == EDataType_Short ||
+				eData == EDataType_Unsigned_Short ||
+				eData == EDataType_Int ||
+				eData == EDataType_Unsigned_Int ||
+				eData == EDataType_Float ||
+				eData == EDataType_Bitmap);
+			ASSERT(pData);
+
+			glCheck(glTexSubImage2D(ToGL(ETextureType_2D), nLevels, vOffset.X, vOffset.Y, vSize.X, vSize.Y, ToGL(eFormat), ToGL(eData), pData));
 		}
 
 		void CRenderContext::Translate(FLOAT fX, FLOAT fY, FLOAT fZ) const
@@ -629,6 +670,11 @@ namespace retro
 			ENSURE_GLEXT_INITIALIZED
 
 			glCheck(glUseProgramObjectARB(uHandleARB));
+		}
+
+		void CRenderContext::Vertex2(const core::TVector2f& vVertex) const
+		{
+			glCheck(glVertex2f(vVertex.X, vVertex.Y));
 		}
 
 		void CRenderContext::VertexPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const

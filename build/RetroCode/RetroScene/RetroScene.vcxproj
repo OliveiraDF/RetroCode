@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{22C1F06A-D082-4125-BB81-33066DA80023}</ProjectGuid>
+    <ProjectGuid>{A7C884C8-1581-4C67-AA8B-DDF5C3B30F16}</ProjectGuid>
     <Keyword>MFCDLLProj</Keyword>
-    <RootNamespace>RetroCore</RootNamespace>
+    <RootNamespace>RetroScene</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,15 +74,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)d</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)d</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,33 +92,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level4</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\RetroCore.def</ModuleDefinitionFile>
-    </Link>
-    <Midl>
-      <MkTypLibCompatible>false</MkTypLibCompatible>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </Midl>
-    <ResourceCompile>
-      <Culture>0x040c</Culture>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
-    <PreBuildEvent>
-      <Command>mc -h "$(SolutionDir)..\..\include\RetroCode" -r "res" "ErrorCode.mc"</Command>
-    </PreBuildEvent>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -126,12 +99,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\RetroCore.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\RetroScene.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\build\RetroCode\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RetroCored.lib;RetroMFCd.lib;RetroGLd.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -142,9 +117,32 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <PreBuildEvent>
-      <Command>mc -h "$(SolutionDir)..\..\include\RetroCode" -r "res" "ErrorCode.mc"</Command>
-    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>.\RetroScene.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\build\RetroCode\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RetroCored.lib;RetroMFCd.lib;RetroGLd.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x040c</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -155,14 +153,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>.\RetroCore.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\RetroScene.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\build\RetroCode\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RetroCore.lib;RetroMFC.lib;RetroGL.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -173,9 +173,6 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <PreBuildEvent>
-      <Command>mc -h "$(SolutionDir)..\..\include\RetroCode" -r "res" "ErrorCode.mc"</Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -186,14 +183,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\include;$(ProjectDir);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>.\RetroCore.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\RetroScene.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\build\RetroCode\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RetroCore.lib;RetroMFC.lib;RetroGL.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -204,32 +203,20 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <PreBuildEvent>
-      <Command>mc -h "$(SolutionDir)..\..\include\RetroCode" -r "res" "ErrorCode.mc"</Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Base64.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Clock.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Color.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\ExtractPath.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\i18n.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\ImageResource.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Interpolation.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Logger.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\LogLevel.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\LogManager.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Matching.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\ObjectEx.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\PerlinNoise.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\PrefPath.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Random.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Resource.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Shuffle.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\StopWatch.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\System.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\Timer.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\Core\WICManager.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\BlendMode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\DrawableNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\LineNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\Node.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\PointNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\RectangleNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\SceneDocument.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\SceneView.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\SpriteNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\TextNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\TransformableNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\ViewNode.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -245,65 +232,38 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="RetroCore.cpp" />
+    <ClCompile Include="RetroScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\include\RetroCode\Core\Circular.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\MessageQueue.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\Operation.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\Queue.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\Rect.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\Stack.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\StaticArray.inl" />
-    <None Include="..\..\..\include\RetroCode\Core\Vector2.inl" />
-    <None Include="ErrorCode.mc" />
-    <None Include="res\RetroCore.rc2" />
-    <None Include="RetroCore.def" />
+    <None Include="res\RetroScene.rc2" />
+    <None Include="RetroScene.def" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\RetroCode\Core.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Base64.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Circular.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Clock.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Color.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\ExtractPath.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\i18n.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\ILogObserver.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\ImageResource.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Interpolation.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Logger.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\LogLevel.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Matching.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\MessageQueue.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\ObjectEx.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Operation.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\PerlinNoise.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\PrefPath.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Queue.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Random.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Rect.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Resource.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Shuffle.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Stack.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\StaticArray.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\StopWatch.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\System.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Timer.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\Core\Vector2.h" />
-    <ClInclude Include="..\..\..\src\RetroCode\Core\LogManager.h" />
-    <ClInclude Include="..\..\..\src\RetroCode\Core\WICManager.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\BlendMode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\DrawableNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\LineNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\Node.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\PointNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\RectangleNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\SceneDocument.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\SceneView.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\SpriteNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\TextNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\TransformableNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\ViewNode.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="RetroCore.rc" />
+    <ResourceCompile Include="RetroScene.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

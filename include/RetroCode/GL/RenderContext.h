@@ -64,6 +64,7 @@ namespace retro
 			void ClearColor(const core::TColorRGBA& clrClear) const;
 			void ColorPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void DeleteContext();
+			void DeleteTextures(INT nCount, UINT* pTextures) const;
 			void Disable(EFeatureType eType) const;
 			void DrawArrays(EPrimitiveType eType, INT nFirst, INT nCount) const;
 			void Enable(EFeatureType eType) const;
@@ -80,20 +81,23 @@ namespace retro
 			void MatrixMode(EMatrixMode eMatrixMode) const;
 			void MultMatrix(const FLOAT* pMatrix) const;
 			void NewList(UINT uList, ECompilationMode eMode) const;
+			void Ortho(const core::TIntRect& rcView, DOUBLE fNear, DOUBLE fFar) const;
 			void PushMatrix() const;
 			void PopMatrix() const;
 			void PointSize(FLOAT fSize) const;
 			void Rotate(FLOAT fAngle, FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void Scale(FLOAT fX, FLOAT fY, FLOAT fZ) const;
-			void SwapBuffers(CDC* pDC) const;
+			void TexCoord2(const core::TVector2f& vCoord) const;
 			void TexCoordPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void TexImage2D(INT nLevels, INT nComponents, const core::TVector2i& vSize, INT nBorder, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
 			void TexParameteri(ETextureType eType, ETextureParameter eParam, INT nParam) const;
 			void TexParameterf(ETextureType eType, ETextureParameter eParam, FLOAT fParam) const;
+			void TexSubImage2D(INT nLevels, const core::TVector2i& vOffset, const core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
 			void Translate(FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void Uniform1iARB(INT nLocation, INT nV0) const;
 			void UnmakeCurrent() const;
 			void UseProgramARB(UINT uHandleARB) const;
+			void Vertex2(const core::TVector2f& vVertex) const;
 			void VertexPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void Viewport(const core::TIntRect& rcViewport) const;
 

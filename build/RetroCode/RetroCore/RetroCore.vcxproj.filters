@@ -124,6 +124,9 @@
     <None Include="..\..\..\include\RetroCode\Core\Rect.inl">
       <Filter>include\Core</Filter>
     </None>
+    <None Include="..\..\..\include\RetroCode\Core\MessageQueue.inl">
+      <Filter>include\Core</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -226,6 +229,9 @@
       <Filter>include\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\RetroCode\Core\Vector2.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\Core\MessageQueue.h">
       <Filter>include\Core</Filter>
     </ClInclude>
   </ItemGroup>

@@ -134,7 +134,7 @@ namespace retro
 			ASSERT_VALID(pDC);
 
 			Flush();
-			SwapBuffers(pDC);
+			::SwapBuffers(pDC->GetSafeHdc());
 			UnmakeCurrent();
 		}
 

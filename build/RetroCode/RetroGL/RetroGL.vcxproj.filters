@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="local">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4ec4d833-7c0b-4b77-85ac-bdee0cd76f14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\GL">
+      <UniqueIdentifier>{37f8bc08-f4e4-4cdf-8c98-ff88e71669d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RetroGL.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>local</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\RenderView.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\Check.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\Vertex.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\3x3Matrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\RenderContext.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\RenderWindow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\GL\glextPrototypes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RetroGL.def">
+      <Filter>local</Filter>
+    </None>
+    <None Include="res\RetroGL.rc2">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>local</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\RenderView.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\Check.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\Vertex.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\3x3Matrix.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\PrimitiveType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\RenderContext.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\TextureType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\QueryString.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\MatrixMode.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\ArrayType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\FeatureType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\RenderWindow.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\CompilationMode.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\TextureParameter.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\DataType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\FormatType.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\RetroCode\GL\glextPrototypes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\BlendFactor.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RetroGL.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -42,6 +42,7 @@
 #include "Core/StaticArray.h"
 #include "Core/Stack.h"
 #include "Core/Queue.h"
+#include "Core/MessageQueue.h"
 #include "Core/Circular.h"
 #include "Core/Random.h"
 #include "Core/Interpolation.h"
