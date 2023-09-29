@@ -61,7 +61,6 @@
 #include "Core/Color.h"
 #include "Core/Vector2.h"
 #include "Core/Rect.h"
-#include "Core/ImageResource.h"
 
 namespace retro
 {

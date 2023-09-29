@@ -75,9 +75,6 @@
     <ClCompile Include="..\..\..\src\RetroCode\MFC\ListBoxEx.cpp">
       <Filter>src\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\RetroCode\MFC\FontResource.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\RetroMFC.rc2">
@@ -117,9 +114,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\RetroCode\MFC\ListBoxEx.h">
       <Filter>src\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\RetroCode\MFC\FontResource.h">
-      <Filter>include\MFC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

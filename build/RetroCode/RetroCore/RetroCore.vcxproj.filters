@@ -83,12 +83,6 @@
     <ClCompile Include="..\..\..\src\RetroCode\Core\Resource.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\RetroCode\Core\ImageResource.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\RetroCode\Core\WICManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\RetroCode\Core\Color.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -218,9 +212,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\RetroCode\Core\ImageResource.h">
       <Filter>include\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\RetroCode\Core\WICManager.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\RetroCode\Core\Color.h">
       <Filter>include\Core</Filter>
