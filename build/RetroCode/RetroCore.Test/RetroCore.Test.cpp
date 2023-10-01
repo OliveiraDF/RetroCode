@@ -22,7 +22,7 @@ int main()
     CplOutputter.write();
 
 #else
-
+    
     std::ofstream file("result.xml");
 
     CPPUNIT_NS::XmlOutputter XmlOutputter(&Result, file);
