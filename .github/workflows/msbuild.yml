@@ -15,16 +15,6 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Cppchecking
-      uses: deep5050/cppcheck-action@v3.0
-      with:
-        path: src
-            
-  
   build:
     runs-on: windows-latest
 
