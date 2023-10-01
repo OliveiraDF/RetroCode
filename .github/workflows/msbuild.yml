@@ -27,3 +27,14 @@ jobs:
             
     - name: Run MSBuild
       run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
+
+    - name: Run Test
+      run: msbuild /t:RetroCore.Test build\RetroCode\RetroCore.Test\RetroCore.Test.vcxproj -property:Configuration=Release
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure() 
+      with:
+        name: CppUnit Tests
+        path: build\RetroCode\RetroCore.Test\result.xml 
+        reporter: cppunit
