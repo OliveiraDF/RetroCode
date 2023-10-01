@@ -21,6 +21,8 @@ jobs:
     steps:
     - name: Cppchecking
       uses: deep5050/cppcheck-action@v3.0
+      with:
+        path: src
             
   
   build:
