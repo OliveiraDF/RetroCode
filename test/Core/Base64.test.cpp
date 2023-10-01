@@ -26,7 +26,7 @@ void CTestBase64::TestEmptyString()
 	HRESULT hrDecoded = retro::core::Base64Decode(strEncoded.GetString(), lpczBuffer, uSize);
 	strDecoded.ReleaseBuffer((INT)uSize);
 
-	CPPUNIT_ASSERT_EQUAL(E_OUTOFMEMORY, hrEncoded);
+	CPPUNIT_ASSERT_EQUAL(S_OK, hrEncoded);
 	CPPUNIT_ASSERT(strExpected == strEncoded);
 	CPPUNIT_ASSERT_EQUAL(S_OK, hrDecoded);
 	CPPUNIT_ASSERT(strInput == strDecoded);
