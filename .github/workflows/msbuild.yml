@@ -31,7 +31,7 @@ jobs:
     - name: Run Tests
       run: | 
            ./build/RetroCode/x64/Release/RetroCore.Test.exe
-           if [ $? -eq 1 ]; then
+           if ( $? -eq 1 ) {
             exit 1
-           fi
+           }
             
