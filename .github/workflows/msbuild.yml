@@ -26,7 +26,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Run cppcheck
-      uses: deep5050/cppcheck-action@v3.0
+      uses: Konstantin343/cppcheck-annotation-action@v1.0
             
     - name: Run MSBuild
       run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
