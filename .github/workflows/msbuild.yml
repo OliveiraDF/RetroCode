@@ -31,10 +31,9 @@ jobs:
     - name: Run Tests
       run: ./build/RetroCode/x64/Release/RetroCore.Test.exe
 
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()
+    - name: Run Documentation
+      uses: mattnotmitt/doxygen-action@1.9.5
       with:
-        name: CppUnit Tests
-        path: build\RetroCode\RetroCore.Test\result.xml 
-        reporter: cppunit 
+        working-directory: 'doc/'
+        doxyfile-path: 'doc'
+            
