@@ -1,2 +1,2 @@
 # RetroCode
-C/C++ API for Windows Desktop Application
+C/C++ API for Microsoft Windows Desktop Application
