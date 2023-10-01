@@ -29,11 +29,7 @@ jobs:
       run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
-      run: ./build/RetroCode/x64/Release/RetroCore.Test.exe
-
-    - name: Run Documentation
-      uses: mattnotmitt/doxygen-action@1.9.5
-      with:
-        working-directory: 'doc/'
-        doxyfile-path: 'doc'
+      run: | 
+           ./build/RetroCode/x64/Release/RetroCore.Test.exe
+           exit $?
             
