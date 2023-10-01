@@ -69,9 +69,6 @@
     <ClCompile Include="..\..\..\test\Core\Timer.test.cpp">
       <Filter>Fichiers sources\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\ImageResource.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\test\Core\Circular.test.h">
@@ -122,24 +119,8 @@
     <ClInclude Include="..\..\..\test\Core\Operation.test.h">
       <Filter>Fichiers d%27en-tête\Tests</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\ImageResource.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="RetroCore.Test.rc">
-      <Filter>Fichiers de ressources</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="test.bmp">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-    <Image Include="test.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
   </ItemGroup>
 </Project>
