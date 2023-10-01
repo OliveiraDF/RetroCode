@@ -28,8 +28,10 @@ jobs:
     - name: Run MSBuild
       run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
 
-    - name: Run Test
-      run: msbuild /t:RunTests build\RetroCode\RetroCore.Test\RetroCore.Test.vcxproj -property:Configuration=Release
+    - name: Run CppUnit tests with run-command
+      uses: appleboy/run-command@master
+      with:
+        cmd: ./build/RetroCode/x64/Release/RetroCore.Test.exe
 
     - name: Test Report
       uses: dorny/test-reporter@v1
