@@ -1,19 +1,13 @@
+// pch.h : Il s'agit d'un fichier d'en-tête précompilé.
+// Les fichiers listés ci-dessous sont compilés une seule fois, ce qui améliore les performances de génération des futures builds.
+// Cela affecte également les performances d'IntelliSense, notamment la complétion du code et de nombreuses fonctionnalités de navigation du code.
+// Toutefois, les fichiers listés ici sont TOUS recompilés si l'un d'entre eux est mis à jour entre les builds.
+// N'ajoutez pas de fichiers fréquemment mis à jour ici, car cela annule les gains de performance.
+
 #ifndef PCH_H
 #define PCH_H
 
-#include <RetroCode/Core.h>
+// ajouter les en-têtes à précompiler ici
+#include <RetroCode\Core.h>
 
-#include <cppunit/TestCase.h>
-#include <cppunit/BriefTestProgressListener.h>
-#include <cppunit/CompilerOutputter.h>
-#include <cppunit/extensions/TestFactoryRegistry.h>
-#include <cppunit/TestResult.h>
-#include <cppunit/TestResultCollector.h>
-#include <cppunit/TestRunner.h>
-#include <cppunit/TestCaller.h>
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/ui/text/TestRunner.h>
-#include <cppunit/extensions/TestFactoryRegistry.h>
-#include <cppunit/XmlOutputter.h>
-
-#endif
+#endif //PCH_H

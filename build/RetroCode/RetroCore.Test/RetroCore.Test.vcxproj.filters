@@ -13,113 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Tests">
-      <UniqueIdentifier>{bbba5d60-97e8-4bdb-8c9b-57e5ca2db01e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Tests">
-      <UniqueIdentifier>{3b7d3d3f-b78e-4c30-95bc-8c2478340d38}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RetroCore.Test.cpp">
+    <ClCompile Include="Matching.Test.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Circular.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Queue.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Random.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Stack.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\StaticArray.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Base64.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Clock.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\ExtractPath.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Interpolation.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Matching.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\ObjectEx.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Operation.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\StopWatch.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\test\Core\Timer.test.cpp">
-      <Filter>Fichiers sources\Tests</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\test\Core\Circular.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Queue.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Random.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Stack.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\StaticArray.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="TestTimer.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Base64.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Clock.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\ExtractPath.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Interpolation.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Matching.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\ObjectEx.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\StopWatch.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Timer.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\test\Core\Operation.test.h">
-      <Filter>Fichiers d%27en-tête\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
