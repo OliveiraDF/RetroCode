@@ -60,7 +60,7 @@ namespace retro
 
             BYTE in[3], out[4];
             const BYTE* pInput = reinterpret_cast<const BYTE*>(pBuffer);
-            LPTSTR pOutput = strOut.GetBufferSetLength((uSize + 3 - uSize % 3) * 4 / 3 + 1);
+            LPTSTR lpszOutput = strOut.GetBufferSetLength(static_cast<INT>(uSize + 3 - uSize % 3) * 4 / 3 + 1);
             UINT uPos = 0;
 
             UINT_PTR j = 0;
@@ -87,7 +87,7 @@ namespace retro
                     for (INT i = 0; i < 4; i++)
                     {
                         CHAR a = out[i];
-                        pOutput[uPos++] = a;
+                        lpszOutput[uPos++] = a;
                     }
                 }
             }
@@ -103,9 +103,16 @@ namespace retro
             {
                 return E_INVALIDARG;
             }
+          
+            UINT_PTR uLength = 0;
+            HRESULT hr = StringCchLength(lpszIn, STRSAFE_MAX_CCH, &uLength);
+            if (FAILED(hr))
+            {
+                return hr;
+            }
 
             LPCVOID pBuffer = reinterpret_cast<LPCVOID>(lpszIn);
-            const UINT_PTR uSize = (_tcslen(lpszIn) + 1) * sizeof(TCHAR);
+            const UINT_PTR uSize = (uLength + 1) * sizeof(TCHAR);
 
             return Base64Encode(pBuffer, uSize, strOut);
         }
