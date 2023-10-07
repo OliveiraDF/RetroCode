@@ -8,11 +8,6 @@ namespace RetroCoreTest
 	TEST_CLASS(MatchingTest)
 	{
 	public:
-
-		MatchingTest()
-		{
-			Logger::WriteMessage("Tests Matching...");
-		}
 		
 		TEST_METHOD(TestQuestionMark)
 		{

@@ -8,11 +8,7 @@ namespace RetroCoreTest
 	TEST_CLASS(ExtractPathTest)
 	{
 	public:
-		
-		ExtractPathTest()
-		{
-			Logger::WriteMessage("Tests ExtractPath...");
-		}
+
 		TEST_METHOD(TestDrive)
 		{
 			LPCTSTR lpszFile = _T("W:\\Games\\The Park\\Manifest_DebugFiles.txt");
@@ -21,9 +17,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Drive, strResult);
 
-			BOOL bRet = strExpected == strResult;
-
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -35,7 +29,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Dir, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -47,7 +41,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Ext, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -59,7 +53,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_FileName, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -71,7 +65,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Empty, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -83,7 +77,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Drive | retro::core::EComponent_Dir, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -95,7 +89,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Dir | retro::core::EComponent_FileName | retro::core::EComponent_Ext, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
@@ -107,7 +101,7 @@ namespace RetroCoreTest
 
 			HRESULT hr = retro::core::ExtractPath(lpszFile, retro::core::EComponent_Drive | retro::core::EComponent_Ext, strResult);
 
-			Assert::AreSame(S_OK, hr);
+			Assert::IsTrue(SUCCEEDED(hr));
 			Assert::AreEqual(strExpected.GetString(), strResult.GetString());
 		}
 
