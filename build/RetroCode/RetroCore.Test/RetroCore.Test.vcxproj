@@ -188,6 +188,8 @@
     <ClCompile Include="Random.Test.cpp" />
     <ClCompile Include="Stack.Test.cpp" />
     <ClCompile Include="StaticArray.Test.cpp" />
+    <ClCompile Include="StopWatch.Test.cpp" />
+    <ClCompile Include="Timer.Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
