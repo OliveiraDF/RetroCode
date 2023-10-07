@@ -171,7 +171,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Base64.Test.cpp" />
+    <ClCompile Include="Circular.Test.cpp" />
+    <ClCompile Include="Clock.Test.cpp" />
     <ClCompile Include="ExtractPath.Test.cpp" />
+    <ClCompile Include="Interpolation.Test.cpp" />
+    <ClCompile Include="ObjectEx.Test.cpp" />
+    <ClCompile Include="Operation.Test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -179,6 +184,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Matching.Test.cpp" />
+    <ClCompile Include="Queue.Test.cpp" />
+    <ClCompile Include="Random.Test.cpp" />
+    <ClCompile Include="Stack.Test.cpp" />
+    <ClCompile Include="StaticArray.Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
