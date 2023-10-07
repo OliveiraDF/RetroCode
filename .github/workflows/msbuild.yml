@@ -24,14 +24,12 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1
+
+    - name: Setup VSTest to PATH
+      uses: darenm/Setup-VSTest@v1.2
             
     - name: Run MSBuild
       run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
-      run: | 
-           ./build/RetroCode/x64/Release/RetroCore.Test.exe
-           if ( $? -eq 1 ) {
-            exit 1
-           }
-            
+      run: vstest.console.exe build\RetroCode\x64\Release\RetroCore.Test.dll
