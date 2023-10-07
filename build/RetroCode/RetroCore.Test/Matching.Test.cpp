@@ -8,7 +8,7 @@ namespace RetroCoreTest
 	TEST_CLASS(MatchingTest)
 	{
 	public:
-		
+
 		TEST_METHOD(TestQuestionMark)
 		{
 			HRESULT hr = retro::core::Matching(_T("l?racr?ft"), _T("laracroft"));
