@@ -33,4 +33,3 @@ jobs:
 
     - name: Run Tests
       run: vstest.console.exe build\RetroCode\x64\Release\RetroCore.Test.dll
-            
