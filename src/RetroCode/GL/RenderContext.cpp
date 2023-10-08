@@ -364,9 +364,9 @@ namespace retro
 			glCheck(glCallList(uList));
 		}
 
-		void CRenderContext::Clear() const
+		void CRenderContext::Clear(EClearMask eMask) const
 		{
-			glCheck(glClear(GL_COLOR_BUFFER_BIT));
+			glCheck(glClear(eMask));
 		}
 
 		void CRenderContext::ClearColor(const core::TColorRGBA& clrClear) const

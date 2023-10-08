@@ -77,7 +77,7 @@ namespace retro
 
 			MakeCurrent(pDC);
 			ClearColor(clrClear);
-			Clear();
+			Clear(gl::EClearMask_Color_Buffer_Bit);
 		}
 
 		void CSceneView::Draw(const TVertex* pVertices, INT_PTR nVertexCount, gl::EPrimitiveType eType, UINT uTextureID, EBlendMode eBlendMode, UINT uShaderProgram) const

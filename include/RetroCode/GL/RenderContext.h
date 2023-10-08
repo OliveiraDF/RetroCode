@@ -60,7 +60,7 @@ namespace retro
 			void BlendFunc(EBlendFactorSrc eSrcFactor, EBlendFactorDst eDstFactor) const;
 			void Build2DMipmaps(INT nComponents, core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
 			void CallList(UINT uList) const;
-			void Clear() const;
+			void Clear(EClearMask eMask) const;
 			void ClearColor(const core::TColorRGBA& clrClear) const;
 			void ColorPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void DeleteContext();
