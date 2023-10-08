@@ -35,6 +35,7 @@
 
 #include "GL/Check.h"
 #include "GL/FeatureType.h"
+#include "GL/ClearMask.h"
 #include "GL/ArrayType.h"
 #include "GL/CompilationMode.h"
 #include "GL/QueryString.h"

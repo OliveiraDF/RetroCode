@@ -241,6 +241,7 @@
     <ClInclude Include="..\..\..\include\RetroCode\GL\ArrayType.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\BlendFactor.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\Check.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\GL\ClearMask.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\CompilationMode.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\DataType.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\FeatureType.h" />

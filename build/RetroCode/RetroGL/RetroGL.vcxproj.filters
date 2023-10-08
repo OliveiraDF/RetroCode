@@ -118,6 +118,9 @@
     <ClInclude Include="..\..\..\include\RetroCode\GL\BlendFactor.h">
       <Filter>include\GL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\GL\ClearMask.h">
+      <Filter>include\GL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RetroGL.rc">
