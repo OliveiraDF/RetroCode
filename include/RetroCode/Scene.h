@@ -34,6 +34,8 @@
 #include "MFC.h"
 #include "GL.h"
 
+#include "Scene/Vertex.h"
+#include "Scene/3x3Matrix.h"
 #include "Scene/BlendMode.h"
 #include "Scene/SceneDocument.h"
 #include "Scene/SceneView.h"

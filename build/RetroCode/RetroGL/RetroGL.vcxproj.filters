@@ -36,12 +36,6 @@
     <ClCompile Include="..\..\..\src\RetroCode\GL\Check.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\RetroCode\GL\Vertex.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\RetroCode\GL\3x3Matrix.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\RetroCode\GL\RenderContext.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -80,12 +74,6 @@
       <Filter>include\GL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\RetroCode\GL\Check.h">
-      <Filter>include\GL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\RetroCode\GL\Vertex.h">
-      <Filter>include\GL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\RetroCode\GL\3x3Matrix.h">
       <Filter>include\GL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\RetroCode\GL\PrimitiveType.h">

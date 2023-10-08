@@ -205,6 +205,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\3x3Matrix.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\BlendMode.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\DrawableNode.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\LineNode.cpp" />
@@ -216,6 +217,7 @@
     <ClCompile Include="..\..\..\src\RetroCode\Scene\SpriteNode.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\TextNode.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\TransformableNode.cpp" />
+    <ClCompile Include="..\..\..\src\RetroCode\Scene\Vertex.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\Scene\ViewNode.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -245,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\RetroCode\Scene.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\3x3Matrix.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\BlendMode.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\DrawableNode.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\LineNode.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="..\..\..\include\RetroCode\Scene\SpriteNode.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\TextNode.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\TransformableNode.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\Scene\Vertex.h" />
     <ClInclude Include="..\..\..\include\RetroCode\Scene\ViewNode.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />

@@ -76,7 +76,7 @@ namespace retro
 			 * @param uShaderProgram The shader program to use
 			 *
 			 */
-			void Draw(const gl::TVertex* pVertices, INT nVertexCount, gl::EPrimitiveType eType, UINT uTextureID = 0, EBlendMode eBlendMode = EBlendMode_Alpha, UINT uShaderProgram = 0) const;
+			void Draw(const TVertex* pVertices, INT_PTR nVertexCount, gl::EPrimitiveType eType, UINT uTextureID = 0, EBlendMode eBlendMode = EBlendMode_Alpha, UINT uShaderProgram = 0) const;
 
 			/**
 			 * @brief Ends drawing

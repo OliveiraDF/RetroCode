@@ -83,14 +83,14 @@ namespace retro
 			FLOAT GetRotation() const;
 			const core::TVector2f& GetScale() const;
 			const core::TVector2f& GetOrigin() const;
-			gl::C3x3Matrix GetWorld3x3Matrix() const;
+			C3x3Matrix GetWorld3x3Matrix() const;
 
 #pragma endregion
 #pragma region Overridables
 
 		public:
 
-			gl::C3x3Matrix Get3x3Matrix() const override;
+			C3x3Matrix Get3x3Matrix() const override;
 			void OnDraw(const CSceneView* pView) const override;
 			void Serialize(CArchive& ar) override;
 #ifdef _DEBUG

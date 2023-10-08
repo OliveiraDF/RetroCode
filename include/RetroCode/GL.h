@@ -45,8 +45,6 @@
 #include "GL/TextureParameter.h"
 #include "GL/TextureType.h"
 #include "GL/BlendFactor.h"
-#include "GL/Vertex.h"
-#include "GL/3x3Matrix.h"
 #include "GL/RenderContext.h"
 #include "GL/RenderWindow.h"
 #include "GL/RenderView.h"

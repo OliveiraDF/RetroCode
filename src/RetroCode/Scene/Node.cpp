@@ -217,7 +217,7 @@ namespace retro
 #pragma endregion Operations
 #pragma region Overridables
 
-		gl::C3x3Matrix CNode::Get3x3Matrix() const
+		C3x3Matrix CNode::Get3x3Matrix() const
 		{
 			return C3x3Matrix_Identity;
 		}

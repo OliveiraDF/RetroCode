@@ -146,7 +146,7 @@ namespace retro
 #pragma endregion
 #pragma region Overridables
 
-		gl::C3x3Matrix CViewNode::Get3x3Matrix() const
+		C3x3Matrix CViewNode::Get3x3Matrix() const
 		{
 			const FLOAT fPI = static_cast<FLOAT>(M_PI);
 			const FLOAT fAngle = m_fRotation * fPI / 180.f;
@@ -160,7 +160,7 @@ namespace retro
 			const FLOAT c = -a * m_ptCenter.X;
 			const FLOAT d = -b * m_ptCenter.Y;
 
-			return gl::C3x3Matrix(a * fCosine, a * fSine, a * fTx + c,
+			return C3x3Matrix(a * fCosine, a * fSine, a * fTx + c,
 				-b * fSine, b * fCosine, b * fTy + d,
 				0.f, 0.f, 1.f);
 		}
