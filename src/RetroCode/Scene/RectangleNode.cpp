@@ -82,7 +82,7 @@ namespace retro
 
 				for (UINT i = 0; i < POINTCOUNT; i++)
 				{
-					gl::TVertex Vertex;
+					TVertex Vertex;
 					Vertex.vPosition = POINTS[i];
 					Vertex.clrColor = GetColor();
 

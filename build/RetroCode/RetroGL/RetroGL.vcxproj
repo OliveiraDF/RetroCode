@@ -205,13 +205,11 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\RetroCode\GL\3x3Matrix.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\GL\Check.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\GL\glextPrototypes.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\GL\RenderContext.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\GL\RenderView.cpp" />
     <ClCompile Include="..\..\..\src\RetroCode\GL\RenderWindow.cpp" />
-    <ClCompile Include="..\..\..\src\RetroCode\GL\Vertex.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -240,7 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\RetroCode\GL.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\GL\3x3Matrix.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\ArrayType.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\BlendFactor.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\Check.h" />
@@ -256,7 +253,6 @@
     <ClInclude Include="..\..\..\include\RetroCode\GL\RenderWindow.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\TextureParameter.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\TextureType.h" />
-    <ClInclude Include="..\..\..\include\RetroCode\GL\Vertex.h" />
     <ClInclude Include="..\..\..\src\RetroCode\GL\glextPrototypes.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />

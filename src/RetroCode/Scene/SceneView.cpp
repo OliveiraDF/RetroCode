@@ -80,7 +80,7 @@ namespace retro
 			Clear();
 		}
 
-		void CSceneView::Draw(const gl::TVertex* pVertices, INT nVertexCount, gl::EPrimitiveType eType, UINT uTextureID, EBlendMode eBlendMode, UINT uShaderProgram) const
+		void CSceneView::Draw(const TVertex* pVertices, INT_PTR nVertexCount, gl::EPrimitiveType eType, UINT uTextureID, EBlendMode eBlendMode, UINT uShaderProgram) const
 		{
 			static constexpr const struct
 			{
@@ -121,11 +121,11 @@ namespace retro
 			BindTexture(gl::ETextureType_2D, uTextureID);
 			UseProgramARB(uShaderProgram);
 			Uniform1iARB(uTextureID, 0);
-			VertexPointer(2, gl::EDataType_Float, sizeof(gl::TVertex), pData + 0);
-			ColorPointer(4, gl::EDataType_Unsigned_Byte, sizeof(gl::TVertex), pData + 8);
-			TexCoordPointer(2, gl::EDataType_Float, sizeof(gl::TVertex), pData + 12);
+			VertexPointer(2, gl::EDataType_Float, sizeof(TVertex), pData + 0);
+			ColorPointer(4, gl::EDataType_Unsigned_Byte, sizeof(TVertex), pData + 8);
+			TexCoordPointer(2, gl::EDataType_Float, sizeof(TVertex), pData + 12);
 
-			DrawArrays(eType, 0, nVertexCount);
+			DrawArrays(eType, 0, static_cast<INT>(nVertexCount));
 		}
 
 		void CSceneView::EndDraw(CDC* pDC)

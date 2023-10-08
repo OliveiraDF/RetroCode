@@ -139,7 +139,7 @@ namespace retro
 			return m_vOrigin;
 		}
 
-		gl::C3x3Matrix CTransformableNode::Get3x3Matrix() const
+		C3x3Matrix CTransformableNode::Get3x3Matrix() const
 		{
 			const FLOAT fPI = static_cast<FLOAT>(M_PI);
 			const FLOAT fAngle = -m_fRotation * fPI / 180.f;
@@ -152,14 +152,14 @@ namespace retro
 			const FLOAT fTx = -m_vOrigin.X * fSxc - m_vOrigin.Y * fSys + m_vPosition.X;
 			const FLOAT fTy = m_vOrigin.X * fSxs - m_vOrigin.Y * fSyc + m_vPosition.Y;
 
-			return gl::C3x3Matrix(fSxc, fSys, fTx,
+			return C3x3Matrix(fSxc, fSys, fTx,
 				-fSxs, fSyc, fTy,
 				0.f, 0.f, 1.f);
 		}
 
-		gl::C3x3Matrix CTransformableNode::GetWorld3x3Matrix() const
+		C3x3Matrix CTransformableNode::GetWorld3x3Matrix() const
 		{
-			gl::C3x3Matrix mMatrix = C3x3Matrix_Identity;
+			C3x3Matrix mMatrix = C3x3Matrix_Identity;
 			
 			for (const CNode* pNode = this; pNode != NULL; pNode = pNode->GetParent())
 			{

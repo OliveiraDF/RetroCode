@@ -106,7 +106,7 @@ namespace retro
 			{
 				m_Cache.RemoveAll();
 
-				gl::TVertex Vertex;
+				TVertex Vertex;
 
 				Vertex.clrColor = GetColor();
 				Vertex.vPosition = m_ptStart;

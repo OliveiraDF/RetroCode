@@ -95,7 +95,7 @@ namespace retro
 
 		protected:	
 
-			virtual gl::C3x3Matrix Get3x3Matrix() const;
+			virtual C3x3Matrix Get3x3Matrix() const;
 			virtual CViewNode* GetWorldView();
 			virtual const CViewNode* GetWorldView() const;
 			virtual void DoInitialUpdate();

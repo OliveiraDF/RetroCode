@@ -105,7 +105,7 @@ namespace retro
 
 		public:
 
-			gl::C3x3Matrix Get3x3Matrix() const override;
+			C3x3Matrix Get3x3Matrix() const override;
 			CViewNode* GetWorldView() override;
 			const CViewNode* GetWorldView() const override;
 			void DoDraw(const CSceneView* pView) const override;

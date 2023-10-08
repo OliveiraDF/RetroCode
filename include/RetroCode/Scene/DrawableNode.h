@@ -63,7 +63,7 @@ namespace retro
 
 		protected:
 
-			CArray<gl::TVertex>	m_Cache;
+			CArray<TVertex>		m_Cache;
 			BOOL				m_bNeedUpdateCache;
 
 		private:

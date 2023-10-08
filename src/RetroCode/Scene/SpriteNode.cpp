@@ -124,7 +124,7 @@ namespace retro
 
 				m_Cache.RemoveAll();
 
-				gl::TVertex Vertex;
+				TVertex Vertex;
 
 				Vertex.vPosition = core::TVector2f(0.f, 0.f);
 				Vertex.clrColor = GetColor();
