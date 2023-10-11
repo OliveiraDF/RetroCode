@@ -43,5 +43,15 @@ namespace retro
 			ETextureParameter_COUNT
 		};
 
+		enum ETextureValue : INT
+		{
+			ETextureValue_Nearest,
+			ETextureValue_Linear,
+			ETextureValue_Clamp,
+			ETextureValue_Repeat,
+
+			ETextureValue_COUNT
+		};
+
 	}
 }

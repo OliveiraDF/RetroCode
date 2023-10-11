@@ -244,6 +244,36 @@ namespace retro
 			return PARAMETERS[eParam];
 		}
 
+		static inline INT ToGL(ETextureValue eValue)
+		{
+			static constexpr const UINT VALUES[] =
+			{
+				GL_NEAREST,
+				GL_LINEAR,
+				GL_CLAMP,
+				GL_REPEAT
+			};
+			static constexpr const UINT VALUE_COUNT = ARRAYSIZE(VALUES);
+			C_ASSERT(VALUE_COUNT == ETextureValue_COUNT);
+
+			return VALUES[eValue];
+		}
+
+		static inline INT ToGL(ETextureEnv eParam)
+		{
+			static constexpr const UINT PARAMETERS[] =
+			{
+				GL_MODULATE,
+				GL_DECAL,
+				GL_BLEND,
+				GL_REPLACE
+			};
+			static constexpr const UINT PARAMETER_COUNT = ARRAYSIZE(PARAMETERS);
+			C_ASSERT(PARAMETER_COUNT == ETextureEnv_COUNT);
+
+			return PARAMETERS[eParam];
+		}
+
 #pragma region Constructors
 
 		CRenderContext::CRenderContext()
@@ -364,9 +394,9 @@ namespace retro
 			glCheck(glCallList(uList));
 		}
 
-		void CRenderContext::Clear(EClearMask eMask) const
+		void CRenderContext::Clear(UINT uMask) const
 		{
-			glCheck(glClear(eMask));
+			glCheck(glClear(uMask));
 		}
 
 		void CRenderContext::ClearColor(const core::TColorRGBA& clrClear) const
@@ -384,7 +414,7 @@ namespace retro
 				eDataType == EDataType_Unsigned_Int ||
 				eDataType == EDataType_Float ||
 				eDataType == EDataType_Double);
-
+			
 			glCheck(glColorPointer(nSize, ToGL(eDataType), nStride, pPointer));
 		}
 
@@ -565,6 +595,14 @@ namespace retro
 			glCheck(glTexCoordPointer(nSize, ToGL(eDataType), nStride, pPointer));
 		}
 
+		void CRenderContext::TexEnv(ETextureEnv eTextureEnv) const
+		{
+			ASSERT(eTextureEnv >= 0);
+			ASSERT(eTextureEnv < ETextureEnv_COUNT);
+
+			glCheck(glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, ToGL(eTextureEnv)));
+		}
+
 		void CRenderContext::TexImage2D(INT nLevels, INT nComponents, const core::TVector2i& vSize, INT nBorder, EFormatType eFormat, EDataType eData, LPCVOID pData) const
 		{
 			ASSERT(nLevels >= 0);
@@ -597,24 +635,16 @@ namespace retro
 			glCheck(glTexImage2D(ToGL(ETextureType_2D), nLevels, nComponents, vSize.X, vSize.Y, nBorder, ToGL(eFormat), ToGL(eData), pData));
 		}
 
-		void CRenderContext::TexParameteri(ETextureType eType, ETextureParameter eParam, INT nParam) const
+		void CRenderContext::TexParameter(ETextureType eType, ETextureParameter eParam, ETextureValue eValue) const
 		{
 			ASSERT(eType >= 0);
 			ASSERT(eType < ETextureType_COUNT);
 			ASSERT(eParam >= 0);
 			ASSERT(eParam < ETextureParameter_COUNT);
+			ASSERT(eValue >= 0);
+			ASSERT(eValue < ETextureValue_COUNT);
 
-			glCheck(glTexParameteri(ToGL(eType), ToGL(eParam), nParam));
-		}
-
-		void CRenderContext::TexParameterf(ETextureType eType, ETextureParameter eParam, FLOAT fParam) const
-		{
-			ASSERT(eType >= 0);
-			ASSERT(eType < ETextureType_COUNT);
-			ASSERT(eParam >= 0);
-			ASSERT(eParam < ETextureParameter_COUNT);
-
-			glCheck(glTexParameterf(ToGL(eType), ToGL(eParam), fParam));
+			glCheck(glTexParameteri(ToGL(eType), ToGL(eParam), ToGL(eValue)));
 		}
 
 		void CRenderContext::TexSubImage2D(INT nLevels, const core::TVector2i& vOffset, const core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const

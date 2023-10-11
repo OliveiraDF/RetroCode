@@ -44,6 +44,7 @@
 #include "GL/FormatType.h"
 #include "GL/DataType.h"
 #include "GL/TextureParameter.h"
+#include "GL/TextureEnvironment.h"
 #include "GL/TextureType.h"
 #include "GL/BlendFactor.h"
 #include "GL/RenderContext.h"
