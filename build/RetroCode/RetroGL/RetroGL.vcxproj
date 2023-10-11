@@ -252,6 +252,7 @@
     <ClInclude Include="..\..\..\include\RetroCode\GL\RenderView.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\PrimitiveType.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\RenderWindow.h" />
+    <ClInclude Include="..\..\..\include\RetroCode\GL\TextureEnvironment.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\TextureParameter.h" />
     <ClInclude Include="..\..\..\include\RetroCode\GL\TextureType.h" />
     <ClInclude Include="..\..\..\src\RetroCode\GL\glextPrototypes.h" />

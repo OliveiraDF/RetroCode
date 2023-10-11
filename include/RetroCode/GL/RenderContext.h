@@ -60,7 +60,7 @@ namespace retro
 			void BlendFunc(EBlendFactorSrc eSrcFactor, EBlendFactorDst eDstFactor) const;
 			void Build2DMipmaps(INT nComponents, core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
 			void CallList(UINT uList) const;
-			void Clear(EClearMask eMask) const;
+			void Clear(UINT uMask) const;
 			void ClearColor(const core::TColorRGBA& clrClear) const;
 			void ColorPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void DeleteContext();
@@ -88,10 +88,10 @@ namespace retro
 			void Rotate(FLOAT fAngle, FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void Scale(FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void TexCoord2(const core::TVector2f& vCoord) const;
+			void TexEnv(ETextureEnv eTextureEnv) const;
 			void TexCoordPointer(INT nSize, EDataType eDataType, INT nStride, LPCVOID pPointer) const;
 			void TexImage2D(INT nLevels, INT nComponents, const core::TVector2i& vSize, INT nBorder, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
-			void TexParameteri(ETextureType eType, ETextureParameter eParam, INT nParam) const;
-			void TexParameterf(ETextureType eType, ETextureParameter eParam, FLOAT fParam) const;
+			void TexParameter(ETextureType eType, ETextureParameter eParam, ETextureValue eValue) const;
 			void TexSubImage2D(INT nLevels, const core::TVector2i& vOffset, const core::TVector2i& vSize, EFormatType eFormat, EDataType eData, LPCVOID pData) const;
 			void Translate(FLOAT fX, FLOAT fY, FLOAT fZ) const;
 			void Uniform1iARB(INT nLocation, INT nV0) const;
