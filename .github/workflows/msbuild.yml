@@ -21,8 +21,35 @@ jobs:
       uses: darenm/Setup-VSTest@v1.2
             
     - name: Run MSBuild
-      run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
+      run: msbuild build/RetroCode/RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
-      run: vstest.console.exe build\RetroCode\x64\Release\RetroCore.Test.dll     
+      run: vstest.console.exe build/RetroCode/x64/Release/RetroCore.Test.dll    
+      
+    - uses: actions/upload-artifact@v3
+      with:
+        name: binaries-artifact
+        path: |
+          include  
+          build/RetroCode/x64/Release/*.dll
+          build/RetroCode/x64/Release/*.lib
+
+  documentation:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Doxygen
+      uses: mattnotmitt/doxygen-action@1.9.5
+      with:
+        working-directory: doc
+        doxyfile-path: Doxyfile 
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: doxygen-artifact
+        path: doc/html/
             
