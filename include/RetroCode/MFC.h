@@ -39,7 +39,6 @@
 #include "MFC/RetroWinApp.h"
 #include "MFC/DocumentEx.h"
 #include "MFC/LogPane.h"
-#include "MFC/AboutDlg.h"
 
 namespace retro
 {
