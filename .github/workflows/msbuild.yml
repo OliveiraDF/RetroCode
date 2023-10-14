@@ -39,4 +39,9 @@ jobs:
       with:
         working-directory: doc
         doxyfile-path: Doxyfile 
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: doxygen-artifact
+        path: doc/html/
             
