@@ -21,10 +21,18 @@ jobs:
       uses: darenm/Setup-VSTest@v1.2
             
     - name: Run MSBuild
-      run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
+      run: msbuild build/RetroCode/RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
-      run: vstest.console.exe build\RetroCode\x64\Release\RetroCore.Test.dll     
+      run: vstest.console.exe build/RetroCode/x64/Release/RetroCore.Test.dll    
+      
+    - uses: actions/upload-artifact@v3
+      with:
+        name: binaries-artifact
+        path: |
+          include  
+          build/RetroCode/x64/Release/*.dll
+          build/RetroCode/x64/Release/*.lib
 
   documentation:
     needs: build
