@@ -49,6 +49,12 @@
     <Filter Include="src\Views">
       <UniqueIdentifier>{c253829a-295a-49c9-ba72-caafc8fd5f83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dialogs">
+      <UniqueIdentifier>{6a4b135d-3f94-460e-b94a-e375d6066d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\MFC\Dialogs">
+      <UniqueIdentifier>{d998dd8b-096e-4200-8874-64a0a41eb8a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -74,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\RetroCode\MFC\ListBoxEx.cpp">
       <Filter>src\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RetroCode\MFC\RetroWinApp.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\RetroCode\MFC\ListBoxEx.h">
       <Filter>src\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\RetroCode\MFC\RetroWinApp.h">
+      <Filter>include\MFC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
