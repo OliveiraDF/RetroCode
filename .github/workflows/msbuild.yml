@@ -16,29 +16,27 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1
-      
-    - name: Run MSBuild
-      run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
-      
-  test:
-    needs: build
-    runs-on: windows-latest
 
-    steps:
     - name: Setup VSTest to PATH
       uses: darenm/Setup-VSTest@v1.2
+            
+    - name: Run MSBuild
+      run: msbuild build\RetroCode\RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
       run: vstest.console.exe build\RetroCode\x64\Release\RetroCore.Test.dll     
 
-  doxygen:
-    needs: test
+  documentation:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - name: Run Doxygen
       uses: mattnotmitt/doxygen-action@1.9.5
       with:
         working-directory: doc
-        doxyfile-path: Doxyfile      
-    
+        doxyfile-path: Doxyfile 
+            
