@@ -19,8 +19,11 @@ jobs:
 
     - name: Setup VSTest to PATH
       uses: darenm/Setup-VSTest@v1.2
+
+    - name: Run MSBuild Debug
+      run: msbuild build/RetroCode/RetroCode.sln -property:Configuration=Debug
             
-    - name: Run MSBuild
+    - name: Run MSBuild Release
       run: msbuild build/RetroCode/RetroCode.sln -property:Configuration=Release
 
     - name: Run Tests
@@ -33,6 +36,9 @@ jobs:
           include  
           build/RetroCode/x64/Release/*.dll
           build/RetroCode/x64/Release/*.lib
+          build/RetroCode/x64/Debug/*.dll
+          build/RetroCode/x64/Debug/*.pdb
+          build/RetroCode/x64/Debug/*.lib
 
   documentation:
     needs: build
