@@ -33,7 +33,7 @@ namespace retro
 	namespace mfc
 	{
 
-		class CRetroWinApp : public CWinAppEx
+		class AFX_EXT_API CRetroWinApp : public CWinAppEx
 		{
 #pragma region Constructors
 
