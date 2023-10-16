@@ -53,12 +53,11 @@ jobs:
       uses: deep5050/cppcheck-action@v3.0
       with:
         platform: win64
-        output_file: cppcheck/cppcheck_report.txt
 
     - uses: actions/upload-artifact@v3
       with:
         name: cppcheck-artifact
-        path: cppcheck/cppcheck_report.txt
+        path: ./cppcheck_report.txt
 
     - name: Run Doxygen
       uses: mattnotmitt/doxygen-action@1.9.5
