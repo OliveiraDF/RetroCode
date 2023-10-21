@@ -35,12 +35,12 @@ namespace retro
 
 		CString Translate(UINT uID)
 		{
-			CString zTranslate;
+			CString strTranslate;
 
-			BOOL bRet = zTranslate.LoadString(uID);
+			BOOL bRet = strTranslate.LoadString(uID);
 			ASSERT(bRet);
 
-			return zTranslate;
+			return strTranslate;
 		}
 
 		INT MessageBoxStringTable(CWnd* pWnd, UINT uIDText, UINT uIDCaption, UINT uType)
@@ -49,15 +49,15 @@ namespace retro
 
 			BOOL bRet = FALSE;
 
-			CString zText;
-			bRet = zText.LoadString(uIDText);
+			CString strText;
+			bRet = strText.LoadString(uIDText);
 			ASSERT(bRet);
 
-			CString zLabel;
-			bRet = zLabel.LoadString(uIDCaption);
+			CString strLabel;
+			bRet = strLabel.LoadString(uIDCaption);
 			ASSERT(bRet);
 
-			return pWnd->MessageBox(zText.GetString(), zLabel.GetString(), uType);
+			return pWnd->MessageBox(strText.GetString(), strLabel.GetString(), uType);
 		}
 	}
 }

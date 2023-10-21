@@ -34,18 +34,13 @@ namespace retro
 		template<typename TYPE, typename ARG_TYPE>
 		CMessageQueue<TYPE, ARG_TYPE>::CMessageQueue()
 			: m_hNotEmpty(NULL)
+			, m_NotEmpty(FALSE, TRUE)
 		{
-			m_hNotEmpty = CreateEvent(NULL, TRUE, FALSE, NULL);
 		}
 
 		template<typename TYPE, typename ARG_TYPE>
 		CMessageQueue<TYPE, ARG_TYPE>::~CMessageQueue()
 		{
-			if (m_hNotEmpty)
-			{
-				CloseHandle(m_hNotEmpty);
-				m_hNotEmpty = NULL;
-			}
 		}
 
 		template<typename TYPE, typename ARG_TYPE>
@@ -55,7 +50,7 @@ namespace retro
 
 			const INT_PTR nRet = m_Queue.Push(newElement);
 
-			SetEvent(m_hNotEmpty);
+			m_NotEmpty.SetEvent();
 
 			return nRet;
 		}
@@ -64,7 +59,7 @@ namespace retro
 		BOOL CMessageQueue<TYPE, ARG_TYPE>::IsEmpty() const
 		{
 			CCritSecLock Lock(m_Mutex);
-
+			
 			return m_Queue.IsEmpty();
 		}
 
@@ -84,7 +79,7 @@ namespace retro
 
 			if (m_Queue.IsEmpty())
 			{
-				ResetEvent(m_hNotEmpty);
+				m_NotEmpty.ResetEvent();
 			}
 
 			return TRUE;
@@ -93,7 +88,7 @@ namespace retro
 		template<typename TYPE, typename ARG_TYPE>
 		DWORD CMessageQueue<TYPE, ARG_TYPE>::WaitIncomingMessage(DWORD dwMilliseconds, BOOL bAlertable)
 		{
-			return WaitForSingleObjectEx(m_hNotEmpty, dwMilliseconds, bAlertable);
+			return WaitForSingleObjectEx(m_NotEmpty, dwMilliseconds, bAlertable);
 		}
 
 		template<typename TYPE, typename ARG_TYPE>
@@ -102,7 +97,7 @@ namespace retro
 			CCritSecLock Lock(m_Mutex);
 
 			m_Queue.RemoveAll();
-			ResetEvent(m_hNotEmpty);
+			m_NotEmpty.ResetEvent();
 		}
 
 		template<typename TYPE, typename ARG_TYPE>
