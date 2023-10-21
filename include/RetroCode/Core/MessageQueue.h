@@ -126,8 +126,8 @@ namespace retro
 			/**
 			 * Member data
 			 */
-			CRITICAL_SECTION		m_Mutex;
-			HANDLE					m_hNotEmpty;
+			CCriticalSection		m_Mutex;
+			CEvent					m_NotEmpty;
 			CQueue<TYPE, ARG_TYPE>	m_Queue;
 
 		};
